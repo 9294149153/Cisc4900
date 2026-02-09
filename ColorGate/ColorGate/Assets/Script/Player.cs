@@ -1,22 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
-
+public enum ColorState
+{
+    Red,
+    Blue
+}
 public class Player : MonoBehaviour
 {
     private PlayerInputSystem playerInputSystem;
-    
+    private ColorState colorState;
+
+
+    public event EventHandler<OnColorVisualChangeEventArgs> OnColorVisualChange;
+    public class OnColorVisualChangeEventArgs : EventArgs
+    {
+        public ColorState colorState;
+    }
 
     private void Awake()
     {
         playerInputSystem=GetComponent<PlayerInputSystem>();
+
+        //Testing Code
+        colorState = ColorState.Red;
+        
     }
 
 
     private void Update()
     {
         Movement();
+
+
+        //Testing code 
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ColorSwap();
+            OnColorVisualChange?.Invoke(this, new OnColorVisualChangeEventArgs {colorState=colorState });// if cast to check did the event blind
+        }
         
     }
 
@@ -73,14 +98,31 @@ public class Player : MonoBehaviour
             transform.position += moveDir * speed * Time.deltaTime;
 
         }
-
+        //movement fluent 
         float rotateSpeed = 10f;
-
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
 
     }
 
+
+    
+    public void ColorSwap()
+    {
+        if (colorState != ColorState.Blue)
+        {
+            //Color Currently not blueS
+            colorState = ColorState.Blue;
+
+        }
+        else
+        {
+            colorState = ColorState.Red;
+        }
+
+        Debug.Log(colorState.ToString());
+
+    }
 
 
 }

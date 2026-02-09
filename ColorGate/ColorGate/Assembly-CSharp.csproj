@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\PlayerInputSystem.cs" />
     <Compile Include="Assets\PlayerInputAction.cs" />
     <Compile Include="Assets\Script\Player.cs" />
+    <Compile Include="Assets\Script\PlayerVisual.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
