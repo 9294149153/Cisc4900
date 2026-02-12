@@ -3,30 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Windows;
 public enum ColorState
 {
     Red,
     Blue
 }
+
 public class Player : MonoBehaviour
 {
     private PlayerInputSystem playerInputSystem;
-    private ColorState colorState;
-
-
-    public event EventHandler<OnColorVisualChangeEventArgs> OnColorVisualChange;
-    public class OnColorVisualChangeEventArgs : EventArgs
-    {
-        public ColorState colorState;
-    }
+    private Vector2 input;
 
     private void Awake()
     {
         playerInputSystem=GetComponent<PlayerInputSystem>();
 
-        //Testing Code
-        colorState = ColorState.Red;
-        
     }
 
 
@@ -35,19 +27,15 @@ public class Player : MonoBehaviour
         Movement();
 
 
-        //Testing code 
+      
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ColorSwap();
-            OnColorVisualChange?.Invoke(this, new OnColorVisualChangeEventArgs {colorState=colorState });// if cast to check did the event blind
-        }
+       
         
     }
 
     public void Movement()
     {
-        Vector2 input = playerInputSystem.GetMovementVectorNormalized();
+        input = playerInputSystem.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(input.x, 0, input.y);
         float speed = 10f;
         float playerHeight = 2f;
@@ -59,7 +47,7 @@ public class Player : MonoBehaviour
         
 
        
-
+        /*
         if (!canMove)
         {
             //cannot move toward moveDir 
@@ -91,13 +79,15 @@ public class Player : MonoBehaviour
             }
 
 
-        }
+        }*/
 
-        if (canMove)
+       /* if (canMove)
         {
             transform.position += moveDir * speed * Time.deltaTime;
 
-        }
+        }*/
+        transform.position += moveDir * speed * Time.deltaTime;
+
         //movement fluent 
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
@@ -106,23 +96,12 @@ public class Player : MonoBehaviour
     }
 
 
-    
-    public void ColorSwap()
+    public Vector3 PlayerMoveDir()
     {
-        if (colorState != ColorState.Blue)
-        {
-            //Color Currently not blueS
-            colorState = ColorState.Blue;
-
-        }
-        else
-        {
-            colorState = ColorState.Red;
-        }
-
-        Debug.Log(colorState.ToString());
-
+        Vector3 moveDir = new Vector3(input.x, 0, input.y);
+        return moveDir;
     }
+  
 
 
 }

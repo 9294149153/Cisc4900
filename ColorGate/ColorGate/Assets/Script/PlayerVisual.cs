@@ -6,7 +6,7 @@ public class PlayerVisual : MonoBehaviour
 {
     
     private MeshRenderer meshRenderer;
-    [SerializeField] private Player player;
+    [SerializeField] private ColorSwap colorSwap;
 
     private void Awake()
     {
@@ -16,13 +16,14 @@ public class PlayerVisual : MonoBehaviour
     }
     private void Start()
     {
-        player.OnColorVisualChange += Player_OnColorVisualChange;
+       
+        colorSwap.OnColorVisualChange += ColorSwap_OnColorVisualChange;
         meshRenderer.material.color = Color.red;
     }
 
-    private void Player_OnColorVisualChange(object sender, Player.OnColorVisualChangeEventArgs e)
+    private void ColorSwap_OnColorVisualChange(object sender, ColorSwap.OnColorVisualChangeEventArgs e)
     {
-        if ( e.colorState== ColorState.Red)
+        if (e.colorState == ColorState.Red)
         {
             meshRenderer.material.color = Color.red;
         }
@@ -31,5 +32,7 @@ public class PlayerVisual : MonoBehaviour
             meshRenderer.material.color = Color.blue;
         }
     }
+
+   
     
 }
