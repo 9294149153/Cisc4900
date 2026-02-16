@@ -13,7 +13,7 @@ public class ColorDetection : MonoBehaviour
 
 
     //
-    public IColorInteractable FindClosestDifferentColor(ColorState playerColor)
+    public IColorInteractable FindClosestDifferentColor(ColorIdentity playerCurrentColor)
     {
         //Detect all ColorInterableObject if in range
         RaycastHit[] colorInteractableHits = Physics.SphereCastAll(detectionPoint.position, radius,detectionPoint.forward, distance, colorInteractableLayer);
@@ -29,7 +29,7 @@ public class ColorDetection : MonoBehaviour
             if (target == null) continue;
 
             //Hit object has different color than player 
-            if (target.GetColor() != playerColor)
+            if (target.GetColorIdentity() !=playerCurrentColor )
                 return target; 
         }
 

@@ -9,7 +9,7 @@ public interface IColorInteractable
    // public void ColorSwap();
   
 
-    public ColorState GetColor();
+    public ColorIdentity GetColorIdentity();
 
-    public void SetColor(ColorState color);
+    public void SetColor(ColorIdentity color);
 }

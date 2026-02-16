@@ -12,7 +12,7 @@ public class ColorSwap : MonoBehaviour
     private PlayerColor playerColor;
     private ColorDetection playerColorDetection;
 
-    public event EventHandler<EventArgs> OnPlayerColorChange;
+ 
     private void Awake()
     {
         playerColor=GetComponent<PlayerColor>();
@@ -30,14 +30,13 @@ public class ColorSwap : MonoBehaviour
 
     public void TrySwap()
     {
-        var target = playerColorDetection.FindClosestDifferentColor(playerColor.GetColor());
+        var target = playerColorDetection.FindClosestDifferentColor(playerColor.GetCurrentColorIdentity());
         if (target == null) return;
 
-
-        ColorState oldColor = playerColor.GetColor();
-        playerColor.SetColor(target.GetColor());
-        target.SetColor(oldColor);  
-        OnPlayerColorChange?.Invoke(this , EventArgs.Empty);
+        ColorIdentity oldColor=target.GetColorIdentity();
+        target.SetColor(playerColor.GetCurrentColorIdentity());
+        playerColor.SetColor(oldColor);
+       
         
     }
 

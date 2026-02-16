@@ -2,46 +2,73 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ColorObject;
 
 public class PlayerColor : MonoBehaviour
 {
     
-    private ColorState currentColor;
     
 
-  //Event For playerVisual Change that passing colorState Value  
-    public event EventHandler<OnColorVisualChangeEventArgs> OnColorVisualChange;
-    public class OnColorVisualChangeEventArgs : EventArgs
+   [SerializeField] private ColorIdentity[] colorIdentity;
+     private ColorIdentity currentColor;
+    
+
+
+    //Event For playerVisual Change that passing colorState Value  
+    public event EventHandler<OnColorChanageEventArgs> OnColorVisualChange;
+    public event EventHandler<OnColorChanageEventArgs> OnWallColliderDetection;
+    public class OnColorChanageEventArgs : EventArgs
     {
-        public ColorState colorState;
+        public  ColorIdentity color;
     }
 
 
-   
 
+
+    private void Awake()
+    {
+        
+    }
 
     private void Start()
     {
-        currentColor = ColorState.Red;
+
+        if (colorIdentity != null && colorIdentity.Length>0)
+        {
+            currentColor = colorIdentity[0];
 
 
+            OnColorVisualChange?.Invoke(this, new OnColorChanageEventArgs { color = currentColor });
+            OnWallColliderDetection?.Invoke(this, new OnColorChanageEventArgs { color = currentColor });
+
+        }
        
-        OnColorVisualChange?.Invoke(this, new OnColorVisualChangeEventArgs { colorState = currentColor });
+
+        
+
+
     }
 
-    public ColorState GetColor()
+  
+
+    public ColorIdentity GetCurrentColorIdentity()
     {
         return currentColor;
     }
 
-    public void SetColor(ColorState colorState)
+    public void SetColor(ColorIdentity color)
     {
-        if (colorState != currentColor)
+        if (currentColor!=color)
         {
+            currentColor = color;
+            
+            OnColorVisualChange?.Invoke(this, new OnColorChanageEventArgs { color = currentColor });
+            OnWallColliderDetection?.Invoke(this, new OnColorChanageEventArgs { color = currentColor });
 
-            currentColor = colorState;
-            OnColorVisualChange?.Invoke(this, new OnColorVisualChangeEventArgs { colorState = currentColor });
+            
 
         }
     }
+
+    
 }

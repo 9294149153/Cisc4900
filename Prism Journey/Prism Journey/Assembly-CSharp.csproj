@@ -64,10 +64,13 @@
     <Compile Include="Assets\Script\Player\PlayerVisual.cs" />
     <Compile Include="Assets\Script\Player\PlayerInputSystem.cs" />
     <Compile Include="Assets\Script\ColorSwap.cs" />
+    <Compile Include="Assets\Script\WallDetection.cs" />
     <Compile Include="Assets\Script\Player\PlayerColor.cs" />
     <Compile Include="Assets\Script\IColorInteractable.cs" />
     <Compile Include="Assets\PlayerInputAction.cs" />
     <Compile Include="Assets\Script\Enum\ColorState.cs" />
+    <Compile Include="Assets\Script\ScriptableObjectScript\ColorIdentity.cs" />
+    <Compile Include="Assets\Script\ColorObjectVisual.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\ColorObject.cs" />
   </ItemGroup>

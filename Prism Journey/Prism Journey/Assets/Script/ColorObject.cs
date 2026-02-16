@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,36 +6,38 @@ using UnityEngine;
 public class ColorObject : MonoBehaviour, IColorInteractable
 {
 
-    private MeshRenderer meshRenderer;
-    private ColorState colorState;
+    
+   
 
-    private void Awake()
-    {
-        meshRenderer = GetComponent<MeshRenderer>();
-        colorState=ColorState.Blue;
-    }
+    [SerializeField] private ColorIdentity[] colorIdentity;
+     private ColorIdentity currentColor;
+
+
+    public event EventHandler<OnColorVisualChangeEventArg> OnColorVisualChange;
+    public class OnColorVisualChangeEventArg { public ColorIdentity color; }
+
 
 
     private void Start()
     {
-        meshRenderer.material.color=Color.blue;
-    }
-    public ColorState GetColor()
-    {
-        return colorState;
-    }
-
-    public void SetColor(ColorState colorState)
-    {
-        this.colorState = colorState;
-        if (colorState == ColorState.Red)
+        if (colorIdentity != null) 
         {
-            meshRenderer.material.color=Color.red;
+            currentColor = colorIdentity[0];
+            OnColorVisualChange?.Invoke(this, new OnColorVisualChangeEventArg { color = currentColor });
 
         }
-        else
-        {
-            meshRenderer.material.color = Color.blue;
-        }
+       
+    
+    }
+
+  public ColorIdentity GetColorIdentity()
+    {
+        return currentColor;
+    }
+
+    public void SetColor(ColorIdentity swapColor)
+    {
+        currentColor = swapColor;
+        OnColorVisualChange?.Invoke(this, new OnColorVisualChangeEventArg{ color = currentColor });
     }
 }

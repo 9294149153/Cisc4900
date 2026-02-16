@@ -17,16 +17,9 @@ public class PlayerVisual : MonoBehaviour
     }
    
 
-    private void PlayerColor_OnColorVisualChange(object sender, PlayerColor.OnColorVisualChangeEventArgs e)
+    private void PlayerColor_OnColorVisualChange(object sender, PlayerColor.OnColorChanageEventArgs e)
     {
-        if (e.colorState == ColorState.Red)
-        {
-            meshRenderer.material.color = Color.red;
-        }
-        else
-        {
-            meshRenderer.material.color = Color.blue;
-        }
+       meshRenderer.material.color=e.color.displayColor;
     }
 
     
