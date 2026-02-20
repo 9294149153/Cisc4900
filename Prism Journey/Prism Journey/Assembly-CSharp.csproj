@@ -61,6 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\ColorDetection.cs" />
+    <Compile Include="Assets\TestingScript\NavMeshTesting.cs" />
+    <Compile Include="Assets\Script\Enemies\IEnemyState.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemyIdle.cs" />
     <Compile Include="Assets\Script\Player\PlayerVisual.cs" />
     <Compile Include="Assets\Script\Player\PlayerInputSystem.cs" />
     <Compile Include="Assets\Script\ColorSwap.cs" />
@@ -70,7 +73,9 @@
     <Compile Include="Assets\PlayerInputAction.cs" />
     <Compile Include="Assets\Script\Enum\ColorState.cs" />
     <Compile Include="Assets\Script\ScriptableObjectScript\ColorIdentity.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemyStateManager.cs" />
     <Compile Include="Assets\Script\ColorObjectVisual.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemyPatrol.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\ColorObject.cs" />
   </ItemGroup>
@@ -911,6 +916,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Burst.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1007,6 +1016,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Navigation.Updater">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1035,8 +1048,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
