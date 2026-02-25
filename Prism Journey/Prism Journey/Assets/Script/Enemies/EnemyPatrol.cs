@@ -15,6 +15,10 @@ public class EnemyPatrol : IEnemyState
     public void EnterState(EnemyStateManager enemy)
     {
        waitTimer = 0;
+        if (enemy.transform.position != enemy.startPosition)
+        {
+            enemy.agent.SetDestination(enemy.startPosition);
+        }
         SetRandomDestination(enemy);
     }
 
@@ -36,6 +40,17 @@ public class EnemyPatrol : IEnemyState
                 SetRandomDestination(enemy);
             }
         }
+
+        //Player touch The alram Zone 
+        //Enter Chase State
+        if (enemy.playerInAlarmZone == true)
+        {
+            enemy.SwitchState(enemy.chaseState);
+        }
+        else
+        {
+
+        }
     }
 
 
@@ -56,4 +71,6 @@ public class EnemyPatrol : IEnemyState
         Vector2 r = Random.insideUnitCircle * radius;
         return new Vector3(center.x + r.x, center.y, center.z + r.y);
     }
+
+
 }

@@ -61,17 +61,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\ColorDetection.cs" />
-    <Compile Include="Assets\TestingScript\NavMeshTesting.cs" />
     <Compile Include="Assets\Script\Enemies\IEnemyState.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemyAttack.cs" />
     <Compile Include="Assets\Script\Enemies\EnemyIdle.cs" />
     <Compile Include="Assets\Script\Player\PlayerVisual.cs" />
     <Compile Include="Assets\Script\Player\PlayerInputSystem.cs" />
     <Compile Include="Assets\Script\ColorSwap.cs" />
     <Compile Include="Assets\Script\WallDetection.cs" />
     <Compile Include="Assets\Script\Player\PlayerColor.cs" />
+    <Compile Include="Assets\Script\Enemies\EnemyChase.cs" />
     <Compile Include="Assets\Script\IColorInteractable.cs" />
+    <Compile Include="Assets\Script\Enemies\AttackDetection.cs" />
     <Compile Include="Assets\PlayerInputAction.cs" />
-    <Compile Include="Assets\Script\Enum\ColorState.cs" />
+    <Compile Include="Assets\Script\Enemies\AlramDetection.cs" />
     <Compile Include="Assets\Script\ScriptableObjectScript\ColorIdentity.cs" />
     <Compile Include="Assets\Script\Enemies\EnemyStateManager.cs" />
     <Compile Include="Assets\Script\ColorObjectVisual.cs" />
