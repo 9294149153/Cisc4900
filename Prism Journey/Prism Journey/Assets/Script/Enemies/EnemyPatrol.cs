@@ -2,27 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+/*
 public class EnemyPatrol : IEnemyState
 {
 
     private float waitTimer;
-    public void EixstState(EnemyStateManager enemy)
+   
+    public void Eixst(EnemyStateManager enemy)
     {
         
     }
 
-    public void EnterState(EnemyStateManager enemy)
-    {
-       waitTimer = 0;
-        if (enemy.transform.position != enemy.startPosition)
-        {
-            enemy.agent.SetDestination(enemy.startPosition);
-        }
-        SetRandomDestination(enemy);
-    }
-
-    public void UpdateState(EnemyStateManager enemy)
+    public void Tick(EnemyStateManager enemy)
     {
         if (enemy.agent == null) return;
 
@@ -49,10 +40,20 @@ public class EnemyPatrol : IEnemyState
         }
         else
         {
-
+            return;
         }
     }
 
+    public void Enter(EnemyStateManager enemy)
+    {
+        waitTimer = 0;
+        if (enemy.transform.position != enemy.patrolCenter)
+        {
+            enemy.agent.SetDestination(enemy.patrolCenter);
+        }
+        SetRandomDestination(enemy);
+        enemy.enemyVisual?.PlayPatrol(true);
+    }
 
     public void SetRandomDestination(EnemyStateManager enemy)
     {
@@ -71,6 +72,5 @@ public class EnemyPatrol : IEnemyState
         Vector2 r = Random.insideUnitCircle * radius;
         return new Vector3(center.x + r.x, center.y, center.z + r.y);
     }
-
-
 }
+*/

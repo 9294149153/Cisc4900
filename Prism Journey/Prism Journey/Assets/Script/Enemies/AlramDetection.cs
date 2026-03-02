@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class AlramDetection : MonoBehaviour
 {
     
@@ -12,17 +12,18 @@ public class AlramDetection : MonoBehaviour
     {
         if (!other.CompareTag(detectionName)) return;
 
-        enemy.playerInAlarmZone = true;
-        enemy.playerTransform = other.transform;
+        enemy.PlayerInAlramZone(1);
+        enemy.AssignPlayerTransform(other.transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag(detectionName)) return;
 
-        enemy.playerInAlarmZone = false;
-        enemy.playerTransform = null;
-        
+        enemy.PlayerInAlramZone(0);
+        enemy.AssignPlayerTransform(null);
+
     }
 
 }
+*/

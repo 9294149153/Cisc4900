@@ -4,8 +4,11 @@ using UnityEngine;
 
 public interface IEnemyState 
 {
-    public void EixstState(EnemyStateManager enemy);
-    public void UpdateState(EnemyStateManager enemy);
 
-    public void EnterState(EnemyStateManager enemy);
+    
+
+    public void Exit(EnemyAIBase enemy);
+    public void Tick (EnemyAIBase enemy);
+
+    public void Enter(EnemyAIBase enemy);
 }

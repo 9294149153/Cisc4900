@@ -1,0 +1,28 @@
+
+using UnityEngine;
+
+/*
+[CreateAssetMenu(menuName = "Enemy/Config")]
+public class EnemysConfig :ScriptableObject
+{
+    [Header("Patrol")]
+    public float patrolRadius ;
+    public float patrolPointTolerance ;
+    public float patrolWaitTime ;
+
+    [Header("Attack")]
+    public float attackCooldownMax = 1.2f;
+    public AttackDefinition attack;
+
+
+    [Header("Movement")]
+    public float patrolSpeed ;
+    public float chaseSpeed;
+
+    [Header("Ranges")]
+    public float alarmRange ;   
+    public float attackRange ;
+
+
+}
+*/

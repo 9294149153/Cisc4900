@@ -1,51 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
-
+/*
 public class EnemyAttack : IEnemyState
 {
 
-    private float returnChaseStateColdown = 3f;
-    private float returnChaseStateTimeCount;
-    public void EixstState(EnemyStateManager enemy)
-    {
-      
-    }
+    private float nextAttackTimer;
 
-    public void EnterState(EnemyStateManager enemy)
+    public void Eixst(EnemyStateManager enemy)
     {
        
-         Debug.Log("on attack state");
-        returnChaseStateTimeCount = 0f;
-
-        if (enemy.agent != null)
-        {
-            enemy.agent.isStopped = true;
-            enemy.agent.ResetPath();
-        }
-
-        if (enemy.attackPrefabs != null && enemy.attackSpawnPoint != null)
-        {
-            GameObject obj = GameObject.Instantiate(
-                enemy.attackPrefabs,
-                enemy.attackSpawnPoint.position,
-                Quaternion.Euler(90f, enemy.transform.eulerAngles.y, 0f)
-            );
-
-            GameObject.Destroy(obj, 2f);
-        }
     }
 
-    public void UpdateState(EnemyStateManager enemy)
+    public void Enter(EnemyStateManager enemy)
     {
-        if( returnChaseStateTimeCount>returnChaseStateColdown)
+        nextAttackTimer = 0;
+        enemy.attackSpawnPoint = enemy.playerTransform;
+        enemy.agent.isStopped = true;   // pauses movement
+        enemy.agent.ResetPath(); // clears the current path/destination
+        enemy.attack.Perform(enemy);
+    }
+
+    public void Tick(EnemyStateManager enemy)
+    {
+        //Player not in the attack zone 
+        if (enemy.playerInAttackZone == false)
         {
             enemy.SwitchState(enemy.chaseState);
+
         }
         else
         {
-            returnChaseStateTimeCount += Time.deltaTime;
+            //player  in attack zone 
+            //and the attackColdtime reach the max
+            if (nextAttackTimer >= enemy.attackColdownMax)
+            {
+                enemy.attackSpawnPoint = enemy.playerTransform ;
+                enemy.agent.isStopped = true;   
+                enemy.agent.ResetPath();
+                enemy.attack.Perform(enemy);
+                nextAttackTimer = 0;
+            }
+            else
+            {
+                nextAttackTimer += Time.deltaTime;
+               // enemy.agent.SetDestination(enemy.playerTransform.position);
+            }
         }
     }
 }
+*/

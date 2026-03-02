@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class AttackDetection : MonoBehaviour
 {
 
@@ -23,3 +23,4 @@ public class AttackDetection : MonoBehaviour
 
     }
 }
+*/

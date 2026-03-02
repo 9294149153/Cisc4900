@@ -1,47 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class EnemyChase : IEnemyState
 {
-    public void EixstState(EnemyStateManager enemy)
+    public void Eixst(EnemyStateManager enemy)
     {
-        
+       
     }
 
-    public void EnterState(EnemyStateManager enemy)
+    public void Enter(EnemyStateManager enemy)
     {
-        enemy.agent.speed = 4f;
+        Debug.Log("Weclome to chase state");
+        enemy.enemyVisual.PlayPatrol(false);
     }
 
-    public void UpdateState(EnemyStateManager enemy)
+    public void Tick(EnemyStateManager enemy)
     {
-        //Player  in  the alram range
-        if(enemy.playerInAlarmZone == true)
+        if (enemy.playerInAlarmZone)
         {
             enemy.agent.SetDestination(enemy.playerTransform.position);
 
-            //if Player in Attack Range
-            if (enemy.playerInAttackZone == true)
+
+            //also in attack zone
+            if (enemy.playerInAttackZone)
             {
                 enemy.SwitchState(enemy.attackState);
-            }
-            else
-            {
-                //not in attack range
-                
             }
         }
         else
         {
             enemy.SwitchState(enemy.patrolState);
-            return;
         }
-             
-
-
-        
-
-
+       
     }
 }
+*/
