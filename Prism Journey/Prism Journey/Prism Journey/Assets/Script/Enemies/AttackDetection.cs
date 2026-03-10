@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class AttackDetection : MonoBehaviour
 {
-
-    [SerializeField] private EnemyStateManager enemy;
-
+    [SerializeField] private EnemyAIBase enemy;
+    [SerializeField] private SphereCollider collider; 
     private const string detectionName = "Player";
+
+    private void Awake()
+    {
+        if (!collider) collider = GetComponent<SphereCollider>();
+        collider.radius = enemy.AttackZoneRadius;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag(detectionName)) return;
-        enemy.playerInAttackZone = true;
-        
+        enemy.SetAttackRange(true);
+
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag(detectionName)) return;
 
-        enemy.playerInAttackZone = false;
+        enemy.SetAttackRange(false);
 
     }
+
 }

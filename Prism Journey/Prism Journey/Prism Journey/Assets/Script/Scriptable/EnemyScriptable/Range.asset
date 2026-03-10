@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b373b722d717a374783997d2df65be97, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e25c050df7e88f4d947ce0f3588b504, type: 3}
   m_Name: Range
   m_EditorClassIdentifier: 
-  patrolRadius: 6
-  patrolPointTolerance: 0.3
-  patrolWaitTime: 2
-  attackPrefab: {fileID: 4606345599847852032, guid: f776631b57345fe4bb3ab5e76eba455c,
+  projectilePrefab: {fileID: 4606345599847852032, guid: f776631b57345fe4bb3ab5e76eba455c,
     type: 3}
-  patrolSpeed: 4
-  chaseSpeed: 4.5
-  alarmRange: 9
-  attackRange: 5
+  lifeTime: 2
+  spawnEuler: {x: 90, y: 0, z: 0}
