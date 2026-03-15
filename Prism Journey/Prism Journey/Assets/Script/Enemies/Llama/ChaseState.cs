@@ -18,7 +18,7 @@ public class ChaseState : MonoBehaviour, IEnemyStates
     }
     public void Enter()
     {
-        Debug.Log("Chase State");
+      
         enemyContext.anim.GetStateForAnimation(StateType);
         enemyContext.enemyMotor.SetChaseSpeed(enemyContext.enemyConfig.chaseSpeed);
         enemyContext.enemyMotor.ResumeAgent(enemyContext.player.position);

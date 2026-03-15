@@ -33,4 +33,8 @@ public class EnemySensor : MonoBehaviour
         distanceToPlayer = Vector3.Distance(local, player);
     }
 
+   public bool InDisRange(float dis)
+    {
+        return dis >= distanceToPlayer;
+    }
 }

@@ -76,8 +76,9 @@ public class EnemyBrain : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, context.enemyConfig.outChaseRange);
 
         // 
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, context.enemyConfig.meleeRangeRadius);
+       
+
+       
 
 
     }

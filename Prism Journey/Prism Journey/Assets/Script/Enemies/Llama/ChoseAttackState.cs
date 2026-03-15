@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ChoseAttackState : MonoBehaviour , IEnemyStates
 {
@@ -8,21 +9,23 @@ public class ChoseAttackState : MonoBehaviour , IEnemyStates
 
     public EnemyState StateType => EnemyState.ChoseAttack;
 
-    [SerializeField]private List<EnemyState> attackStates;
+    [SerializeField]private List<EnemyState> meleeAttackStates;
+    [SerializeField] private List<EnemyState> rangeAttackStates;
     private void Awake()
     {
         if (enemyContext == null) enemyContext = GetComponent<EnemyContext>();
-        SetupAttacks();
+        SetupAttacksForMelee();
+        SetupAttacksForRange();
     }
 
     public void Enter()
     {
-        Debug.Log("ChoseAttackState");
+      
         enemyContext.anim.GetStateForAnimation(StateType);
         enemyContext.enemyMotor.StopAgent();
 
         // attackStates List empty
-        if (attackStates.Count == 0)
+        if (meleeAttackStates.Count == 0 && rangeAttackStates.Count==0)
         {
             enemyContext.enemyBrain.ChangeState(EnemyState.Chase);
             
@@ -39,43 +42,93 @@ public class ChoseAttackState : MonoBehaviour , IEnemyStates
 
     public void Tick()
     {
-        //EnemyState next = attackStates[Random.Range(0, attackStates.Count)];
-        //enemyContext.enemyBrain.ChangeState(next);
 
-        if (attackStates.Count > 0)
+
+        if (rangeAttackStates.Count != 0 && meleeAttackStates.Count != 0)
         {
-            if (enemyContext.enemyAttackConfig.hasMelee && enemyContext.enemySensor.DisToPlayer <= enemyContext.enemyConfig.meleeRangeRadius)
+            bool inMelee = enemyContext.enemySensor.InDisRange(enemyContext.enemyConfig.meleeRangeRadius);
+            bool inRange = enemyContext.enemySensor.InDisRange(enemyContext.enemyConfig.RrangeRaidus);
+
+            if (inMelee && inRange)
             {
-                enemyContext.enemyBrain.ChangeState(EnemyState.MeleeAttack);
+                List<EnemyState> randomList = RandomForTwoList(meleeAttackStates, rangeAttackStates);
+                enemyContext.enemyBrain.ChangeState(randomList[RandomIndexForTheList(randomList)]);
+                return;
+            }
+            else if (!inMelee && inRange)
+            {
+                enemyContext.enemyBrain.ChangeState(rangeAttackStates[RandomIndexForTheList(rangeAttackStates)]);
+                return;
+            }
+            else if (inMelee)
+            {
+                enemyContext.enemyBrain.ChangeState(meleeAttackStates[RandomIndexForTheList(meleeAttackStates)]);
+                return;
             }
             else
             {
                 enemyContext.enemyBrain.ChangeState(EnemyState.Chase);
+                return;
             }
-            
-
-            
-
-           
         }
-        
+
+
+
+
+
+
     }
 
-    void SetupAttacks()
+    void SetupAttacksForMelee()
     {
-        attackStates = new List<EnemyState>();
+        meleeAttackStates = new List<EnemyState>();
 
         if (enemyContext.enemyAttackConfig.hasMelee)
-            attackStates.Add(EnemyState.MeleeAttack);
+            meleeAttackStates.Add(EnemyState.MeleeAttack);
 
-        if (enemyContext.enemyAttackConfig.hasSpit)
-            attackStates.Add(EnemyState.SpitAttack);
-
-        if (enemyContext.enemyAttackConfig.hasRoll)
-            attackStates.Add(EnemyState.RollAttack);
 
         if (enemyContext.enemyAttackConfig.hasBounce)
-            attackStates.Add(EnemyState.BounceAttack);
+            meleeAttackStates.Add(EnemyState.BounceAttack);
+
+    }
+
+    void SetupAttacksForRange()
+    {
+        rangeAttackStates = new List<EnemyState>();
+
+        if (enemyContext.enemyAttackConfig.hasSpit)
+            rangeAttackStates.Add(EnemyState.SpitAttack);
+
+        if (enemyContext.enemyAttackConfig.hasRoll)
+            rangeAttackStates.Add(EnemyState.RollAttack);
+      
+    }
+
+  
+     List<EnemyState> RandomForTwoList(List<EnemyState> a , List<EnemyState> b)
+    {
+        int index = UnityEngine.Random.Range(0, 2);
+
+       if(index == 1)
+        {
+            return a;
+        }
+        else
+        {
+            return b;
+        }
+    }
+
+    int RandomIndexForTheList(List<EnemyState> list)
+    {
+        int  listIndex;
+        if (list.Count != 0)
+        {
+            
+            listIndex = UnityEngine.Random.Range(0, list.Count);
+            return listIndex;
+        }
+        return -1;
     }
 
 }

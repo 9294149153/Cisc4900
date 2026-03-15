@@ -21,7 +21,7 @@ public class IdleState : MonoBehaviour, IEnemyStates
 
     public void Enter()
     {
-        Debug.Log("Enter Idle");
+       
         context.anim.GetStateForAnimation(StateType);
     }
 

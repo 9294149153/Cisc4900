@@ -42,6 +42,15 @@ public class AnimationBridge : MonoBehaviour
                
                 break;
 
+            case EnemyState.RollAttack:
+                animator.SetBool("Rolling",true);
+
+                break;
+
+            case EnemyState.SpitAttack:
+                animator.SetBool("Spit", true);
+                break;
+
 
         }
 

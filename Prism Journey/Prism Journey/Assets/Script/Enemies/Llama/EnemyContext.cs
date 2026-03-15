@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyContext : MonoBehaviour
 {
     public Transform player;
+    public Transform projectileSpwanPosition;
     public NavMeshAgent agent;
     public AnimationBridge anim;
     public EnemyBrain enemyBrain;
