@@ -36,6 +36,5 @@ public class ColorDetection : MonoBehaviour
         return null;
     }
 
-
-
+    
 }

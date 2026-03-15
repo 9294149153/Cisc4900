@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-/*
+
 [CreateAssetMenu(menuName = "Enemy/Config")]
 public class EnemysConfig :ScriptableObject
 {
@@ -11,10 +11,9 @@ public class EnemysConfig :ScriptableObject
     public float patrolWaitTime ;
 
     [Header("Attack")]
-    public float attackCooldownMax = 1.2f;
-    public AttackDefinition attack;
+    public GameObject attackPrefab;
 
-
+    
     [Header("Movement")]
     public float patrolSpeed ;
     public float chaseSpeed;
@@ -25,4 +24,3 @@ public class EnemysConfig :ScriptableObject
 
 
 }
-*/
