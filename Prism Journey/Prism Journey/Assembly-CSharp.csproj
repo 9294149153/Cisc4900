@@ -60,17 +60,23 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Boss\Mech\Sequence.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyBrain.cs" />
     <Compile Include="Assets\TestingScript\NavMeshTesting.cs" />
     <Compile Include="Assets\GameObjectIdentity.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Selector.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\Scriptable\EnemyAttackConfig.cs" />
+    <Compile Include="Assets\fireAttackEffects\scripts\fireBallScript.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorDetection.cs" />
     <Compile Include="Assets\Script\Player\PlayerInputSystem.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\ZoneAttackNode.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\NodeState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyMotor.cs" />
     <Compile Include="Assets\Script\Player\PlayerColor.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemySensor.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\IdleState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AnimationBridge.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\UniversalScript\BossContext.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\MeleeAttackState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyState.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorSwap.cs" />
@@ -82,17 +88,23 @@
     <Compile Include="Assets\Script\Enemies\Llama\EnemyConfig.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\SphereProjectile.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\BossHealth.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\UniversalScript\BossConfig.cs" />
     <Compile Include="Assets\Script\Player\PlayerVisual.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyContext.cs" />
     <Compile Include="Assets\Script\Interface\Damage\IDamageable.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\WallDetection.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Node.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\IEnemyStates.cs" />
     <Compile Include="Assets\PlayerInputAction.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\ChoseAttackState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\ChaseState.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\IColorInteractable.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\CheckBossHPRange.cs" />
+    <Compile Include="Assets\fireAttackEffects\scripts\InstantiateScript.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\EnemyDamage.cs" />
     <Compile Include="Assets\Script\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RandomSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Visual\Quirky Series\_Shader\SoftSurface.shader" />
