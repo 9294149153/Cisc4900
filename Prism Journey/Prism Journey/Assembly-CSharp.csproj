@@ -69,14 +69,16 @@
     <Compile Include="Assets\fireAttackEffects\scripts\fireBallScript.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorDetection.cs" />
     <Compile Include="Assets\Script\Player\PlayerInputSystem.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\ZoneAttackNode.cs" />
     <Compile Include="Assets\Script\Boss\Mech\NodeState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyMotor.cs" />
     <Compile Include="Assets\Script\Player\PlayerColor.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemySensor.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\IdleState.cs" />
+    <Compile Include="Assets\Telegraph\RetangleShapeTelegraphCode\RectangleTelegraphTest.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AnimationBridge.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\BossBT.cs" />
     <Compile Include="Assets\Script\Boss\Mech\UniversalScript\BossContext.cs" />
+    <Compile Include="Assets\Telegraph\RetangleShapeTelegraphCode\RectangleTelegrahVisual.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\MeleeAttackState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyState.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorSwap.cs" />
@@ -87,10 +89,12 @@
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\SpitAttackState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyConfig.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\IdleNode.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\SphereProjectile.cs" />
     <Compile Include="Assets\Script\Boss\Mech\BossHealth.cs" />
     <Compile Include="Assets\Script\Boss\Mech\UniversalScript\BossConfig.cs" />
     <Compile Include="Assets\Script\Player\PlayerVisual.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\NodeColdown.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyContext.cs" />
     <Compile Include="Assets\Script\Interface\Damage\IDamageable.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\WallDetection.cs" />
@@ -100,11 +104,13 @@
     <Compile Include="Assets\Script\Enemies\Llama\ChoseAttackState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\ChaseState.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\IColorInteractable.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\AttackNode\SphereSweepAttackNode.cs" />
     <Compile Include="Assets\Script\Boss\Mech\CheckBossHPRange.cs" />
     <Compile Include="Assets\fireAttackEffects\scripts\InstantiateScript.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\EnemyDamage.cs" />
     <Compile Include="Assets\Script\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Script\Boss\Mech\RandomSelector.cs" />
+    <Compile Include="Assets\TestPrefab\MechBoss\AttackPrefab\SphereAttackControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Visual\Quirky Series\_Shader\SoftSurface.shader" />

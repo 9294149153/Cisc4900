@@ -9,7 +9,6 @@ public class SphereProjectile : MonoBehaviour
     private Vector3 direction;
     private Transform playerPosition;
     [SerializeField] private float speed = 10f;
-    private float timer;
     private float timerMax = 4f;
 
    
@@ -21,24 +20,9 @@ public class SphereProjectile : MonoBehaviour
        
     }
 
-    private void Start()
-    {
-        timer = 0f;
-    }
-        
-
-
     private void Update()
     {
-        
-    
-      
-        if (timer >= timerMax)
-        {
-            Destroy(this);
-        }
-        timer += Time.deltaTime;
-        transform.position += direction * speed * Time.deltaTime;
+      Destroy(gameObject,timerMax);
     }
 }
 

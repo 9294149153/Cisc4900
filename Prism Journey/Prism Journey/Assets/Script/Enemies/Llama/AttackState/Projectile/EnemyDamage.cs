@@ -25,12 +25,12 @@ public class EnemyDamage : MonoBehaviour
             if (enemyContext != null )
             {
                 damageable.TakeDamage(enemyContext.enemyConfig.spitDamage);
-                Destroy(this);
+                Destroy(gameObject);
             }
             else
             {
                 damageable.TakeDamage(10f);
-                Destroy(this);
+                Destroy(gameObject);
             }
                 
         }

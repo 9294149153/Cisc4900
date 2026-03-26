@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
 
-    private BossContext bossContext;
 
-    private float maxHealth;
+
+    private float maxHealth=100;
 
     private float currentHP; // boss current health
 
@@ -15,16 +16,20 @@ public class BossHealth : MonoBehaviour
 
     public float CurrentHP => currentHP;
 
-
-    private void Awake()
-    {
-        if(bossContext == null) bossContext=GetComponent<BossContext>();
-
-    }
     private void Start()
     {
-       maxHealth=bossContext.bossConfig.maxHealth; // assing health from universal Config so later can apply remote config stats
         currentHP=maxHealth; // assing health
+    }
+
+    private void Update()
+    {
+        float testminHp = 50f;
+        if (currentHP >= testminHp)
+        {
+            currentHP-=Time.deltaTime *0.8f;
+           
+        }
+       //Debug.Log(currentHP);
     }
 
 }

@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class CheckBossHPRange : Node
 {
-    private BossHealth bossHealth;
+  
+    private BossContext context;
     private float maxHP;
     private float minHP;
 
-    public CheckBossHPRange(BossHealth bossHealth, float maxHP, float minHP)
+    public CheckBossHPRange(BossContext context,float maxHP, float minHP)
     {
-        this.bossHealth = bossHealth; // reference to boss health
-        this.maxHP = maxHP;           // upper bound
-        this.minHP = minHP;           // lower bound
+        this.context = context;
+        this. maxHP = maxHP;// upper bound
+        this. minHP = minHP;// lower bound
+
     }
 
     public override NodeState Evaluate()
     {
-        float hp = bossHealth.CurrentHP; // read current hp
+        float hp = context.bossHealth.CurrentHP; // read current hp
+        
 
         if (hp <= maxHP && hp > minHP)
         {
+            Debug.Log("in Boss Hp Range Node");
             return NodeState.Success; // hp is inside this phase range
         }
 

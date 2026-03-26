@@ -24,13 +24,15 @@ public class EnemySensor : MonoBehaviour
         DistanceToPlayer();
     }
 
+
+    
     void DistanceToPlayer()
     {
        Vector3 local = transform.position;
         Vector3 player = enemyContext.player.transform.position;
         local.y = 0;
         player.y= 0;
-        distanceToPlayer = Vector3.Distance(local, player);
+        distanceToPlayer = Vector3.Distance(local, player); // convert into float
     }
 
    public bool InDisRange(float dis)
