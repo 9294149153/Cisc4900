@@ -36,7 +36,7 @@ public class SphereSweepAttackNode : Node
     public override NodeState Evaluate()
     {
         
-        Debug.Log("In Sphere AttackNode");
+       
         // Phase 1: first time entering node
         if (!started)
         {
@@ -52,7 +52,7 @@ public class SphereSweepAttackNode : Node
             telegraphVisual = telegraphReference.GetComponent<RectangleTelegrahVisual>();
             if (telegraphVisual != null)
             {
-                telegraphVisual.Setup(1, 18); // (width , length)
+                telegraphVisual.Setup(context.telegraphWidth, context.telegraphLength); // (width , length)
                 telegraphVisual.SetFillPercent(0f);
             }
             return NodeState.Running;
@@ -73,7 +73,7 @@ public class SphereSweepAttackNode : Node
             telegraphReference.transform.position = Vector3.Lerp(
                  telegraphReference.transform.position,
                   toPlayerXonly,
-                 Time.deltaTime * context.sphereSweepAttacktrackingSpeed
+                 Time.deltaTime * context.telegraphTrackingSpeed
              );
 
             return NodeState.Running;
@@ -105,20 +105,24 @@ public class SphereSweepAttackNode : Node
 
         //Phrase 5 Spawn the attack 
 
-        Vector3 leftedge = telegraphVisual.GetLeftEdgeWorld() - new Vector3(0, 0f, 34);
-        Vector3 rightedge = telegraphVisual.GetLeftEdgeWorld() - new Vector3(0, 0f, -34);
+        Vector3 leftedge = telegraphVisual.GetLeftEdgeWorld();
+        leftedge.z = leftedge.z - (float)(context.telegraphLength * 2 + 0.5* context.telegraphLength); 
+        Vector3 rightedge = telegraphVisual.GetLeftEdgeWorld();
+        rightedge.z = rightedge.z + (float)(context.telegraphLength * 2 + 0.5 * context.telegraphLength);
+
 
 
         if (!spheresStarted)
         {
             sphereAttack = GameObject.Instantiate(context.sphereAttackPrefab, leftedge, quaternion.identity);
-            spheresStarted = true;
+           spheresStarted = true;
             return NodeState.Running ;
         }
 
         if(sizeTimer < context.sizeTimerMax)
         {
             sizeTimer += Time.deltaTime;
+           
             sphereAttack.transform.localScale += Vector3.one*Time.deltaTime*context.sphereScalespeed;
             return NodeState.Running;
         }
@@ -130,6 +134,7 @@ public class SphereSweepAttackNode : Node
 
       if(Vector3.Distance(sphereAttack.transform.position, rightedge) < 0.05)
         {
+            Debug.Log("error");
 
             EndAttack();
             NodeColdown.SetColdown(false);

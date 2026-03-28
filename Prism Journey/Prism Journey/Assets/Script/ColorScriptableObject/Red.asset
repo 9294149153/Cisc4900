@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentColorName: Red
   displayColor: {r: 1, g: 0, b: 0, a: 0}
-  swapIdentityColor: {fileID: 11400000, guid: 440fb5d2cce6aff4bb9cb5cb5f273c02, type: 2}
+  swapIdentityColor: {fileID: 11400000, guid: 9f9916353b65555419e4f7183963e99d, type: 2}

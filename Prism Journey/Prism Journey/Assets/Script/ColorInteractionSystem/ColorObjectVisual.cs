@@ -12,13 +12,19 @@ public class ColorObjectVisual : MonoBehaviour
     {
        
         meshRenderer = GetComponent<MeshRenderer>();
+       
+
+    }
+    private void OnEnable()
+    {
         colorObject.OnColorVisualChange += ColorObject_OnColorVisualChange;
 
     }
-    private void Start()
+    private void OnDisable()
     {
-       
+        colorObject.OnColorVisualChange -= ColorObject_OnColorVisualChange;
     }
+   
 
     private void ColorObject_OnColorVisualChange(object sender, ColorObject.OnColorVisualChangeEventArg e)
     {

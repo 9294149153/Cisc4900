@@ -18,16 +18,15 @@ public class RollAttackState : MonoBehaviour, IEnemyStates
     {
         hitPlayer = false;
         timer = 0;
-        Debug.Log("RollAttack State");
         enemyContext.enemyMotor.StopAgent();
-        enemyContext.anim.GetStateForAnimation(StateType);
+      //  enemyContext.anim.GetStateForAnimation(StateType);
         enemyContext.enemyMotor.FaceTarget(enemyContext.player.position);
         enemyContext.enemyMotor.SetChaseSpeed(enemyContext.enemyConfig.rollingSpeed);
     }
 
     public void Exit()
     {
-        enemyContext.anim.animator.SetBool("Rolling", false);
+       // enemyContext.anim.animator.SetBool("Rolling", false);
         hitPlayer = false;
     }
 

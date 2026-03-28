@@ -8,9 +8,9 @@ public class BossContext :MonoBehaviour
     // ===== References =====
     public Transform bossTransform;
     public Transform player;
-    //public Animator Animator { get; private set; }
     public BossConfig bossConfig;
     public BossHealth bossHealth;
+    public MechBossAnimationManager mechBossAnim;
     
 
     [Header("SphereSweepAttackRefference")]
@@ -21,14 +21,17 @@ public class BossContext :MonoBehaviour
     public float fillDuration = 1.5f;
     public float telegraphWidth = 4f;
     public float telegraphLength = 10f;
-    public float sphereSweepAttacktrackingSpeed;
+    public float telegraphTrackingSpeed;
 
-    [Header("SphereAttackData")]
+     [Header("SphereAttackData")]
    
     public float sizeTimerMax = 5f;
     public  float sphereScalespeed = 0.8f;
     public float sphereAttackMoveSpeed = 4;
 
+
+    [Header("MechBossAnimationRefference")]
+    public Transform mechBossVisual;
 
 
 }

@@ -6,7 +6,7 @@ public class MeleeAttackState : MonoBehaviour, IEnemyStates
 {
     public EnemyState StateType => EnemyState.MeleeAttack;
     private EnemyContext enemyContext;
-    public float Timer;
+    private float timer;
 
 
     private void Awake()
@@ -21,7 +21,7 @@ public class MeleeAttackState : MonoBehaviour, IEnemyStates
         enemyContext.anim.GetStateForAnimation(StateType);
         enemyContext.enemyMotor.FaceTarget(enemyContext.player.position);
         DoMeleeHit();
-        Timer = 0f;
+        timer = 0f;
     }
 
     public void Exit()
@@ -32,9 +32,9 @@ public class MeleeAttackState : MonoBehaviour, IEnemyStates
     public void Tick()
     {
         enemyContext.enemyMotor.StopAgent();
-        while (enemyContext.enemyConfig.meleeExitTimerMax > Timer)
+        while (enemyContext.enemyConfig.meleeExitTimerMax > timer)
         {
-            Timer += Time.deltaTime;
+            timer += Time.deltaTime;
             
         }
         enemyContext.enemyBrain.ChangeState(EnemyState.Chase);

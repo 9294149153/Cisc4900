@@ -13,7 +13,7 @@ public class BossBT : MonoBehaviour
     private void Awake()
     {
         if(context == null) context=GetComponent<BossContext>();
-
+            
     }
 
     private void Start()
@@ -31,16 +31,16 @@ public class BossBT : MonoBehaviour
 
         // ---------------- PHASE 2 ----------------
         // If HP is between 79.9 and 50, boss randomly uses Zone or Hindrance
-        
-       
+
+
 
         // ---------------- ROOT ----------------
         // Root tries phase1 first, then phase2, then idle
         root = new Selector(new List<Node>
         {
-            phase1,         // first priority
-                             // second priority
-            new IdleNode()  // fallback if no phase matches
+            new IdleNode(context),
+            phase1,         
+              
         });
     }
 

@@ -27,7 +27,7 @@ public class IdleState : MonoBehaviour, IEnemyStates
 
     public void Exit()
     {
-        context .anim.animator.SetBool("Idle",false);
+       // context .anim.animator.SetBool("Idle",false);
     }
 
     public void Tick()

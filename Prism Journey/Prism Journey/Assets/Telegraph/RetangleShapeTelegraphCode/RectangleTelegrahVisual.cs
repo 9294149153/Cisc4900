@@ -62,7 +62,8 @@ public class RectangleTelegrahVisual : MonoBehaviour
     public Vector3 GetLeftEdgeWorld()
     {
         float halfLength = bgQuad.lossyScale.z * 0.5f;
-        return bgQuad.position - bgQuad.forward * halfLength;
+        Vector3 left = bgQuad.position - bgQuad.forward * halfLength;
+        return (bgQuad.position - bgQuad.forward * halfLength);
     }
 
     public Vector3 GetRightEdgeWorld()
@@ -72,4 +73,5 @@ public class RectangleTelegrahVisual : MonoBehaviour
     }
 
 
+  
 }

@@ -64,11 +64,14 @@
     <Compile Include="Assets\Script\Enemies\Llama\EnemyBrain.cs" />
     <Compile Include="Assets\TestingScript\NavMeshTesting.cs" />
     <Compile Include="Assets\GameObjectIdentity.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Animation\AnimationBrain.cs" />
+    <Compile Include="Assets\UnityAssetStore\VFX\fireAttackEffects\scripts\fireBallScript.cs" />
     <Compile Include="Assets\Script\Boss\Mech\Selector.cs" />
+    <Compile Include="Assets\UnityAssetStore\VFX\fireAttackEffects\scripts\InstantiateScript.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\Scriptable\EnemyAttackConfig.cs" />
-    <Compile Include="Assets\fireAttackEffects\scripts\fireBallScript.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorDetection.cs" />
     <Compile Include="Assets\Script\Player\PlayerInputSystem.cs" />
+    <Compile Include="Assets\Script\Player\PlayerVisualFromMatieral.cs" />
     <Compile Include="Assets\Script\Boss\Mech\NodeState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyMotor.cs" />
     <Compile Include="Assets\Script\Player\PlayerColor.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="Assets\Script\Enemies\Llama\EnemyState.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorSwap.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorObject.cs" />
+    <Compile Include="Assets\Script\Player\PlayerAnimationBrain.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorObjectVisual.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\RollAttackState.cs" />
     <Compile Include="Assets\Script\ScriptableObjectScript\ColorIdentity.cs" />
@@ -93,7 +97,6 @@
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\SphereProjectile.cs" />
     <Compile Include="Assets\Script\Boss\Mech\BossHealth.cs" />
     <Compile Include="Assets\Script\Boss\Mech\UniversalScript\BossConfig.cs" />
-    <Compile Include="Assets\Script\Player\PlayerVisual.cs" />
     <Compile Include="Assets\Script\Boss\Mech\NodeColdown.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyContext.cs" />
     <Compile Include="Assets\Script\Interface\Damage\IDamageable.cs" />
@@ -106,14 +109,15 @@
     <Compile Include="Assets\Script\ColorInteractionSystem\IColorInteractable.cs" />
     <Compile Include="Assets\Script\Boss\Mech\AttackNode\SphereSweepAttackNode.cs" />
     <Compile Include="Assets\Script\Boss\Mech\CheckBossHPRange.cs" />
-    <Compile Include="Assets\fireAttackEffects\scripts\InstantiateScript.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Animation\MechBossAnimationManager.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\EnemyDamage.cs" />
     <Compile Include="Assets\Script\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Script\Boss\Mech\RandomSelector.cs" />
     <Compile Include="Assets\TestPrefab\MechBoss\AttackPrefab\SphereAttackControl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Visual\Quirky Series\_Shader\SoftSurface.shader" />
+    <None Include="Assets\UnityAssetStore\Character\Quirky Series\_Shader\SoftSurface.shader" />
+    <None Include="Assets\UnityAssetStore\Character\Mech\IMPORTANT.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

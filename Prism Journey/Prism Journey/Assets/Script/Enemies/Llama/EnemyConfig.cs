@@ -38,6 +38,7 @@ public class EnemyConfig
     public float spitDamage = 20f;
     public float spitDuration = 0.5f;
     public GameObject projectilePrefab;
+    public Vector3 attackScale =  new Vector3(1, 1, 1);
 
 
 }

@@ -24,14 +24,14 @@ public class SpitAttackState : MonoBehaviour, IEnemyStates
         hasShot = false;
         timer = 0f;
 
-        enemyContext.anim.animator.SetBool("Spit", true);
+      //  enemyContext.anim.animator.SetBool("Spit", true);
         enemyContext.enemyMotor.StopAgent();
         enemyContext.enemyMotor.FaceTarget(enemyContext.player.position);
     }
 
     public void Exit()
     {
-        enemyContext.anim.animator.SetBool("Spit", false);
+       // enemyContext.anim.animator.SetBool("Spit", false);
     }
 
     public void Tick()
@@ -60,6 +60,8 @@ public class SpitAttackState : MonoBehaviour, IEnemyStates
             enemyContext.projectileSpwanPosition.position,
             enemyContext.projectileSpwanPosition.rotation
         );
+
+        proj.transform.localScale=enemyContext.enemyConfig.attackScale;
 
         if (proj.TryGetComponent<EnemyDamage>(out var enemyDamage))
         {
