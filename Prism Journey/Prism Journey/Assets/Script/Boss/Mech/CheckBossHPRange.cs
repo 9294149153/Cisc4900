@@ -23,8 +23,7 @@ public class CheckBossHPRange : Node
         
 
         if (hp <= maxHP && hp > minHP)
-        {
-            Debug.Log("in Boss Hp Range Node");
+        { 
             return NodeState.Success; // hp is inside this phase range
         }
 

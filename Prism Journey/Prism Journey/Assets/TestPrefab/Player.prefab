@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorIdentity:
-  - {fileID: 11400000, guid: c67413bb739e75048a3a2fc09db97e1c, type: 2}
-  - {fileID: 11400000, guid: 440fb5d2cce6aff4bb9cb5cb5f273c02, type: 2}
+  - {fileID: 11400000, guid: 5eb332267814c3c4c8caf14ea878d3c1, type: 2}
+  - {fileID: 11400000, guid: 9f9916353b65555419e4f7183963e99d, type: 2}
   currentColor: {fileID: 0}
 --- !u!114 &3470144599173598066
 MonoBehaviour:
@@ -158,6 +158,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageCooldown: 10
+  playerAnim: {fileID: 1862795246511158292}
+  playerScript:
+  - {fileID: 6275192979305469555}
+  - {fileID: 8890254758083023879}
+  - {fileID: 3470144599173598066}
+  - {fileID: 7532699284684795999}
 --- !u!1 &8522939988153078605
 GameObject:
   m_ObjectHideFlags: 0

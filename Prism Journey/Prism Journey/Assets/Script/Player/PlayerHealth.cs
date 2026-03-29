@@ -17,6 +17,13 @@ public class PlayerHealth : MonoBehaviour,IDamageable
 
     [Header("List To set Deactive when player die")]
     [SerializeField] private MonoBehaviour [] playerScript;
+
+    private PlayerColor playerColor;
+
+    private void Awake()
+    {
+        if (playerColor == null) { playerColor = GetComponent<PlayerColor>(); }
+    }
     private void Start()
     {
         currentHealth = maxHealth;
@@ -36,6 +43,33 @@ public class PlayerHealth : MonoBehaviour,IDamageable
        
     }
 
+    public void TakdeDamageWithColor(ColorIdentity color , float damage)
+    {
+        if (!canTakeDamage) return;
+
+        if (currentHealth <= 0) return;
+
+        if (color== playerColor.GetCurrentColorIdentity())
+        {
+            if (playerAnim != null)
+            {
+                playerAnim.PlayTakeDamage();
+            }
+            currentHealth -= damage;
+            Debug.Log("PLauer Current health" + currentHealth);
+        }
+
+        if (currentHealth <= 0)
+        {
+
+            currentHealth = 0; // set to 0 when player health get to negative
+            playerAnim.PlayDie();
+            SetPlayerStatusWhenDie(false);
+        }
+
+        StartCoroutine(DamageCooldown(damageCooldown));
+
+    }
     public void TakeDamage(float damage)
     {
         if (!canTakeDamage) return;
@@ -43,23 +77,21 @@ public class PlayerHealth : MonoBehaviour,IDamageable
         if (currentHealth <= 0) return;
 
         //Call the TakeAttack Anim
+
         if (playerAnim != null)
         {
             playerAnim.PlayTakeDamage();
-            Debug.Log("Exectuted TakeAttackAnimation");
-        }        
-        
+        }
+
 
         currentHealth -= damage;
-
+        Debug.Log("PLayer Take Damage");
         if (currentHealth <= 0) {
 
             currentHealth = 0; // set to 0 when player health get to negative
             playerAnim.PlayDie();
             SetPlayerStatusWhenDie(false);
         }
-
-        Debug.Log(currentHealth);
 
         StartCoroutine(DamageCooldown(damageCooldown));
 
@@ -76,7 +108,6 @@ public class PlayerHealth : MonoBehaviour,IDamageable
 
         canTakeDamage = true;
     }
-
 
     public void SetPlayerStatusWhenDie(bool value)
     {

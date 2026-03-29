@@ -38,7 +38,6 @@ public class NodeColdown :Node
         // node still running
         if (timer < durationTimeMax)
         {
-            Debug.Log(timer);
             return NodeState.Running;
         }
        

@@ -21,15 +21,9 @@ public class BossHealth : MonoBehaviour
         currentHP=maxHealth; // assing health
     }
 
-    private void Update()
+    private void Update()   
     {
-        float testminHp = 50f;
-        if (currentHP >= testminHp)
-        {
-            currentHP-=Time.deltaTime *0.8f;
-           
-        }
-       //Debug.Log(currentHP);
+       
     }
 
 }

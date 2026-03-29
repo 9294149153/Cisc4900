@@ -3,47 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
-
+[RequireComponent(typeof(SphereCollider))]
 public class SphereAttackControl : MonoBehaviour
 {
-    [SerializeField] private Transform startPosition;
-    [SerializeField] private Transform endPosition;
-    [SerializeField] private Transform moveObject;
+    private Collider myCollider;
 
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float stopDistance = 0.05f;
 
-    private bool onStartPosition;
+    [SerializeField] private ColorIdentity currentColor;
+    private void Awake()
+    {
+        myCollider = GetComponent<Collider>();
+        
+        if(currentColor == null)
+        {
+            Debug.LogError($"[SphereAttackControl]| {gameObject.name} ColorIdentity Reference are missing ", this);
+        }
+    }
 
     private void Start()
     {
-        onStartPosition = false;
+        if (myCollider == null)
+        {
+            Debug.LogError($"SphereAttackControl |{myCollider} = missing", this);
+        }
+        myCollider.isTrigger=true;
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (!onStartPosition)
+        IDamageable damageable;
+        PlayerColor playerColor;
+        if (other.CompareTag("Player"))
         {
-            MoveTo(moveObject, startPosition, endPosition, moveSpeed);
-            return;
-        }
 
+            damageable = other?.GetComponent<PlayerHealth>();
+            playerColor = other?.GetComponent<PlayerColor>();
+            if (playerColor != null )
+            {
+                damageable.TakdeDamageWithColor(currentColor, 15f);
+            }
+        }
 
     }
 
-    public void MoveTo(Transform obj,Transform startPo, Transform targetP, float speed)
+    public void SetSphereAttackScale(float speed)
     {
-        if (Vector3.Distance(obj.position, startPo.position) > stopDistance)
-        {
-            obj.position =Vector3.Slerp(obj.position, startPo.position, speed*Time.deltaTime);
-
-        }
-        else
-        {
-            obj.position = startPosition.position;
-            onStartPosition=true;
-        }
-
+        transform.localScale += Vector3.one * Time.deltaTime * speed;
     }
 
+    public void MoveToTarget(Vector3 target,float speed)
+    {
+        transform.position = Vector3.MoveTowards(
+        transform.position,
+        target,
+        speed * Time.deltaTime);
+    }
 }

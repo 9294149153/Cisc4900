@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SphereSweepAttackNode : Node
@@ -28,32 +29,53 @@ public class SphereSweepAttackNode : Node
     private GameObject telegraphReference;
     private RectangleTelegrahVisual telegraphVisual; //  read the scipt the telegraph spawn
     private GameObject sphereAttack;
+    private SphereAttackControl sphereAttackControl;
 
+
+
+
+    private float animationTimer;
     public SphereSweepAttackNode(BossContext bossContext)
     {
         context = bossContext;
     }
     public override NodeState Evaluate()
     {
-        
+        //test use
+        //never enable this attack if false
+        if (!context.sphereSweepEnabled) { return NodeState.Failure; }
        
         // Phase 1: first time entering node
         if (!started)
         {
             StartAttack();
+
             return NodeState.Running;
         }
+
+        if (animationTimer < context.sphereAnimationDuration)
+        {
+            animationTimer += Time.deltaTime;
+            context.mechAnimation.PlayerSphereSweepAttack();
+            return NodeState.Running;
+        }
+
+        context.mechAnimation.PlayEmpty();
+
 
         // Phase 2: Spawn the Telegraph and set the correct position
         //only call once
         if (telegraphReference== null)
         {
             telegraphReference = SpawnTelegraph();
+
             telegraphVisual = telegraphReference.GetComponent<RectangleTelegrahVisual>();
             if (telegraphVisual != null)
             {
+                telegraphVisual.SetRotation(-context.bossTransform.forward);
                 telegraphVisual.Setup(context.telegraphWidth, context.telegraphLength); // (width , length)
                 telegraphVisual.SetFillPercent(0f);
+                
             }
             return NodeState.Running;
         }
@@ -64,17 +86,10 @@ public class SphereSweepAttackNode : Node
         {
             trackingtimer += Time.deltaTime;
 
-            Vector3 toPlayerXonly = new Vector3(
-                context.player.transform.position.x,
-                0.05f,
-                0f
-            );
+            Vector3 toPlayer = PlayerForwardAxis(context.bossTransform.forward);
+            toPlayer.y += 0.05f;
 
-            telegraphReference.transform.position = Vector3.Lerp(
-                 telegraphReference.transform.position,
-                  toPlayerXonly,
-                 Time.deltaTime * context.telegraphTrackingSpeed
-             );
+            telegraphVisual.MoveToward(toPlayer, context.telegraphTrackingSpeed);
 
             return NodeState.Running;
         }
@@ -103,38 +118,48 @@ public class SphereSweepAttackNode : Node
             return NodeState.Running;
         }
 
+
+                
         //Phrase 5 Spawn the attack 
 
-        Vector3 leftedge = telegraphVisual.GetLeftEdgeWorld();
-        leftedge.z = leftedge.z - (float)(context.telegraphLength * 2 + 0.5* context.telegraphLength); 
-        Vector3 rightedge = telegraphVisual.GetLeftEdgeWorld();
-        rightedge.z = rightedge.z + (float)(context.telegraphLength * 2 + 0.5 * context.telegraphLength);
-
-
+        Vector3 leftedge = telegraphVisual.GetLeftEdgeOfTelegraph(context.bossTransform.up);
+        leftedge.y += 1.5f;
+        Vector3 rightedge = telegraphVisual.GetRightEdgeOfTelegraph(context.bossTransform.up);
+        rightedge.y += 1.5f;
 
         if (!spheresStarted)
         {
-            sphereAttack = GameObject.Instantiate(context.sphereAttackPrefab, leftedge, quaternion.identity);
-           spheresStarted = true;
+            int index;
+            if (context.sphereAttackPrefab.Length>=2)
+            { 
+                index=UnityEngine.Random.Range(0, context.sphereAttackPrefab.Length);
+            }
+            else
+            {
+                return 0 ;
+            }
+            sphereAttack = GameObject.Instantiate(context.sphereAttackPrefab[index], leftedge, quaternion.identity);
+            sphereAttackControl=sphereAttack.GetComponent<SphereAttackControl>();
+            spheresStarted = true;
             return NodeState.Running ;
         }
 
         if(sizeTimer < context.sizeTimerMax)
         {
+            
             sizeTimer += Time.deltaTime;
-           
-            sphereAttack.transform.localScale += Vector3.one*Time.deltaTime*context.sphereScalespeed;
+            if (sphereAttackControl == null)
+            {
+                Debug.LogError("SphereAttackControl missing!");
+                return NodeState.Failure;
+            }
+            sphereAttackControl.SetSphereAttackScale(context.sphereScaleSpeed);
             return NodeState.Running;
         }
-
-        sphereAttack.transform.position = Vector3.MoveTowards(
-        sphereAttack.transform.position,
-        rightedge,
-        context.sphereAttackMoveSpeed * Time.deltaTime);
-
+        sphereAttackControl.MoveToTarget(rightedge,context.sphereAttackMoveSpeed);
+       
       if(Vector3.Distance(sphereAttack.transform.position, rightedge) < 0.05)
         {
-            Debug.Log("error");
 
             EndAttack();
             NodeColdown.SetColdown(false);
@@ -153,8 +178,12 @@ public class SphereSweepAttackNode : Node
         spheresStarted = false;
         trackingtimer = 0f;
         sizeTimer = 0f;
-}
+        animationTimer=0f;
 
+    }
+
+
+    //reset refference for next loop of sequence 
     private void EndAttack()
     {
         if (telegraphReference != null)
@@ -163,35 +192,61 @@ public class SphereSweepAttackNode : Node
             telegraphReference = null;
 
         }
+        
         if(sphereAttack != null)
         {
             GameObject.Destroy(sphereAttack);
             sphereAttack = null;
+            sphereAttackControl = null;
         }
 
+
         started = false;
-        lockedPosition = false;
-        spheresStarted = false;
-        trackingtimer = 0f;
-        fillTimer = 0f;
-        sizeTimer = 0f;
     }
 
     private GameObject SpawnTelegraph()
     {
-        GameObject telegraphObject = GameObject.Instantiate(
-        context.rectangleTelegrapgPrefab,
-        context.bossTransform.position,
-        Quaternion.Euler(0,0,0)  );
-
-        telegraphObject.transform.rotation = Quaternion.Euler(90, 0, 0);
-
-
-
+        Vector3 pos;
+        if (context.TelegraphSpawnPosition != null)
+        {
+             pos = context.TelegraphSpawnPosition.position;
+        }
+        else
+        {
+            pos =context.bossTransform.position;
+        }
+            GameObject telegraphObject = GameObject.Instantiate(
+            context.rectangleTelegrapgPrefab,
+            pos,
+            Quaternion.Euler(0, 0, 0));
         return telegraphObject;
     }
 
-    
+    private Vector3 PlayerForwardAxis(Vector3 forward)
+    {
+        if(context.player == null)
+        {
+            Debug.LogError($"[BossContext]| {context.player} + refference Missing");
+        }
+        Vector3 pos = new Vector3(context.player.position.x*forward.x,context.player.position.y*forward.y,context.player.position.z*forward.z);
+        return pos;
+    }
+
+    public void TestUseConfig()
+    {
+        if (!context.sphereSweepEnabled)
+        {
+            Debug.Log("[SphereSweepAttackNode] Sphere sweep attack is disabled.");
+            return;
+        }
+
+        float trackingDuration = context.telegraphTrackingDuration;
+        float fillTime = context.fillDuration;
+        float moveSpeed = context.sphereAttackMoveSpeed;
+
+        Debug.Log($"Use attack config -> tracking={trackingDuration}, fill={fillTime}, moveSpeed={moveSpeed}");
+    }
+
 }
 
 

@@ -10,8 +10,12 @@ public class IdleNode : Node
     private float timer;
     private float idleDurationTimerMax=3f;
 
+    [Header("Animation condition")]
+    private bool callAnimation;
+
     //Context Reffernce
     private BossContext context;
+    
 
     public IdleNode(BossContext context)
     {
@@ -19,10 +23,11 @@ public class IdleNode : Node
     }
     public override NodeState Evaluate()
     {
-        //First Time enter Idle
+        //First Time enter Idle State
         if (isIdle==true)
         {
             isIdle= false;
+            callAnimation=false;
             timer = 0;
            return NodeState.Running;
 
@@ -36,10 +41,16 @@ public class IdleNode : Node
             return NodeState.Running;
         }
 
-        //
+        // call Idle Animation after correction postion 
+        //only call onces
+        if (callAnimation == false)
+        {
+            context.mechAnimation.PlayIdle();
+            callAnimation = true;
+            return NodeState.Running;
+        }
 
         //start to count the time before to next  node
-        //and set the boss into correct posistion 
         if (timer < idleDurationTimerMax)
         {
             timer += Time.deltaTime;
