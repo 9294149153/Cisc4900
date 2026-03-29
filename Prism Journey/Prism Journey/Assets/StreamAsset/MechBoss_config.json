@@ -16,7 +16,7 @@
       "sizeTimerMax": 4.5,
       "sphereScaleSpeed": 1.1,
       "sphereAttackMoveSpeed": 6.0,
-      "animationDuration": 2.6
+      "sphereAnimationDuration": 2.6
     }
   }
 }
