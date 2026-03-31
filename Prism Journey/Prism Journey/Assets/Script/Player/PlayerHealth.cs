@@ -85,17 +85,30 @@ public class PlayerHealth : MonoBehaviour,IDamageable
 
 
         currentHealth -= damage;
-        Debug.Log("PLayer Take Damage");
+       
         if (currentHealth <= 0) {
 
             currentHealth = 0; // set to 0 when player health get to negative
             playerAnim.PlayDie();
             SetPlayerStatusWhenDie(false);
         }
-
+        Debug.Log("PLayer Take Damage"+"Current health is ="+currentHealth);
         StartCoroutine(DamageCooldown(damageCooldown));
 
      
+    }
+
+    public void OnTakeDamageWithNoColdown(float damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+
+            currentHealth = 0; // set to 0 when player health get to negative
+            playerAnim.PlayDie();
+            SetPlayerStatusWhenDie(false);
+        }
     }
 
     // provide Waiting ,system  run in backgound until this function finish before reach to next code

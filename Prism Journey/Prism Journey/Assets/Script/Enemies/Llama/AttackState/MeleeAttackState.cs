@@ -18,7 +18,7 @@ public class MeleeAttackState : MonoBehaviour, IEnemyStates
     {
         
         enemyContext.enemyMotor.StopAgent();
-        enemyContext.anim.GetStateForAnimation(StateType);
+        enemyContext.anim.PlayMelee();
         enemyContext.enemyMotor.FaceTarget(enemyContext.player.position);
         DoMeleeHit();
         timer = 0f;

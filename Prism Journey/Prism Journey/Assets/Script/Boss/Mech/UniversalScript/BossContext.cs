@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class BossContext :MonoBehaviour
 {
@@ -12,12 +13,13 @@ public class BossContext :MonoBehaviour
     public BossHealth bossHealth;
     public MechBossAnimationBrain mechAnimation;
     public Transform TelegraphSpawnPosition;
-    public GameObject rectangleTelegrapgPrefab;
-    public GameObject[] sphereAttackPrefab;
+    public Transform plane;
 
+    [Header("IdleNode")]
+    public bool idleEnable = true;
 
     [Header("Sphere Sweep Attack Runtime Values")]
-    public bool sphereSweepEnabled = true;
+   
 
     public float telegraphTrackingDuration;
     public float fillDuration;
@@ -30,27 +32,50 @@ public class BossContext :MonoBehaviour
     public float sphereAttackMoveSpeed;
     public float sphereAnimationDuration;
 
-
-   /* [Header("SphereSweepAttackRefference")]
+    //Sphere Attack Prefab 
     public GameObject rectangleTelegrapgPrefab;
     public GameObject[] sphereAttackPrefab;
    
-    public float telegraphTrackingDuration = 4f;
-    public float fillDuration = 1.5f;
-    public float telegraphWidth = 4f;
-    public float telegraphLength = 10f;
-    public float telegraphTrackingSpeed;
-
-     [Header("SphereAttackData")]
    
-    public float sizeTimerMax = 5f;
-    public  float sphereScaleSpeed = 0.8f;
-    public float sphereAttackMoveSpeed = 4;
-    public float sphereSweepAttackAnimationDurationTime = 3f;*/
+
+    [Header("Bubble Attack Runtime Values")]
+   
+
+    //telegraph Data
+    public float bubleTelegraphTrackingDuration;
+    public float bubleTelegraphfillDuration;
+    public float bubleTelegraphtelegraphWidth;
+    public float bubleTelegraphtelegraphLength;
+    public float bubleTelegraphtelegraphTrackingSpeed;
+    public int   bubleSpwanTelegraphAmount=4;
+
+    //BubblePrefab data
+    public GameObject[] bubblePrefab;
+    public float bubleRadius = 2.6f;
+    public float bubbleDamageToBoss = 5f;
+    public float bubbleDamageToPlayer = 5f;
+
+    //Animation Data
+    public float bubbleAnimationDurationTime=2.6f;
+
+    //Bubble Attack Prefab
+    public GameObject sphereTelegraphPrefab;
+
+
 
 
     [Header("MechBossAnimationRefference")]
     public Transform mechBossVisual;
+
+
+
+
+    [Header("AttackStatsManager")]
+
+    public bool isAttackRunning;
+
+    public bool sphereSweepEnabled = true;
+    public bool bubbleAttackEnable = true;
 
 
     public void ApplyRemoteConfig(MechBossRemoteConfigData data)
@@ -89,28 +114,7 @@ public class BossContext :MonoBehaviour
         Debug.Log("[MechBossContext] Config applied.");
     }
 
-    public void ApplyLocalConfig(MechBossLocalConfig config)
-    {
-        if (config == null)
-        {
-            Debug.LogError("[BossContext] ApplyMechBossLocalConfig failed: config is null.");
-            return;
-        }
-
-        telegraphTrackingDuration = config.telegraphTrackingDuration;
-        fillDuration = config.fillDuration;
-        telegraphWidth = config.telegraphWidth;
-        telegraphLength = config.telegraphLength;
-        telegraphTrackingSpeed = config.telegraphTrackingSpeed;
-
-        sizeTimerMax = config.sizeTimerMax;
-        sphereScaleSpeed = config.sphereScaleSpeed;
-        sphereAttackMoveSpeed = config.sphereAttackMoveSpeed;
-        sphereAnimationDuration = config.sphereSweepAttackAnimationDurationTime;
-
-        Debug.Log($"[BossContext] Local config applied. Version: {config.configVersion}");
-    }
-
+  
    
 
 }

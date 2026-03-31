@@ -10,7 +10,7 @@ public class BossHealth : MonoBehaviour
 
     private float maxHealth=100;
 
-    private float currentHP; // boss current health
+    [Inspectable]private float currentHP; // boss current health
 
 
 
@@ -24,6 +24,16 @@ public class BossHealth : MonoBehaviour
     private void Update()   
     {
        
+    }
+
+    public void TakeDamage(float value)
+    {
+        currentHP-=value;
+        if (currentHP < 0)
+        {
+            currentHP=0;
+            Debug.Log("Boss Current Health= "+ currentHP);
+        }
     }
 
 }

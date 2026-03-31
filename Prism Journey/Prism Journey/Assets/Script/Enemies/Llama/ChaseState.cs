@@ -18,8 +18,8 @@ public class ChaseState : MonoBehaviour, IEnemyStates
     }
     public void Enter()
     {
-      
-      //  enemyContext.anim.GetStateForAnimation(StateType);
+
+        enemyContext.anim.PlayChase();
         enemyContext.enemyMotor.SetChaseSpeed(enemyContext.enemyConfig.chaseSpeed);
         enemyContext.enemyMotor.ResumeAgent(enemyContext.player.position);
         toChoseAttackTimer = 0;
@@ -27,7 +27,6 @@ public class ChaseState : MonoBehaviour, IEnemyStates
 
     public void Exit()
     {
-       // enemyContext.anim.animator.SetBool("Chase", false);
     }
 
     public void Tick()

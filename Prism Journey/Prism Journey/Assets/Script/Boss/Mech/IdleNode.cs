@@ -23,6 +23,10 @@ public class IdleNode : Node
     }
     public override NodeState Evaluate()
     {
+        if (context.idleEnable == false)
+        {
+            return NodeState.Failure;
+        }
         //First Time enter Idle State
         if (isIdle==true)
         {
@@ -58,6 +62,7 @@ public class IdleNode : Node
             return NodeState.Running;
         }
 
+        context.idleEnable=false;
 
 
         return NodeState.Failure;

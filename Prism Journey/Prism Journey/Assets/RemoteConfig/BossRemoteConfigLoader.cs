@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using static System.Net.WebRequestMethods;
 
 public class BossRemoteConfigLoader : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class BossRemoteConfigLoader : MonoBehaviour
 
     [Header("Remote")]
     [TextArea(2, 5)]
-    [SerializeField] private string remoteJsonUrl;
+    [SerializeField] private string remoteJsonUrl= "https://raw.githubusercontent.com/9294149153/Cisc4900/refs/heads/master/Prism%20Journey/Prism%20Journey/Assets/StreamAsset/MechBoss_config.json";
 
     [Header("Debug")]
     [SerializeField] private bool printLogs = true;
@@ -87,7 +88,7 @@ public class BossRemoteConfigLoader : MonoBehaviour
 
             string json = request.downloadHandler.text;
 
-            if (printLogs)
+            if (printLogs)      
             {
                 Debug.Log("[BossRemoteConfigLoader] Remote JSON downloaded:");
                 Debug.Log(json);

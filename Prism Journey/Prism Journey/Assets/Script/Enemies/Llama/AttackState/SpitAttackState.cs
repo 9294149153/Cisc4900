@@ -24,14 +24,13 @@ public class SpitAttackState : MonoBehaviour, IEnemyStates
         hasShot = false;
         timer = 0f;
 
-      //  enemyContext.anim.animator.SetBool("Spit", true);
+        enemyContext.anim.PlaySpit();
         enemyContext.enemyMotor.StopAgent();
         enemyContext.enemyMotor.FaceTarget(enemyContext.player.position);
     }
 
     public void Exit()
     {
-       // enemyContext.anim.animator.SetBool("Spit", false);
     }
 
     public void Tick()

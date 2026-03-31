@@ -14,6 +14,7 @@ public class EnemyContext : MonoBehaviour
     public EnemyMotor enemyMotor;
     public EnemyConfig enemyConfig;//Not monoBehavior
     public EnemyAttackConfig enemyAttackConfig;//not monoBehavior
+  
 
     private void Awake()
     {

@@ -21,13 +21,12 @@ public class IdleState : MonoBehaviour, IEnemyStates
 
     public void Enter()
     {
-       
-        context.anim.GetStateForAnimation(StateType);
+        context.anim.PlayIdle();
     }
 
     public void Exit()
     {
-       // context .anim.animator.SetBool("Idle",false);
+     
     }
 
     public void Tick()

@@ -21,7 +21,6 @@ public class ChoseAttackState : MonoBehaviour , IEnemyStates
     public void Enter()
     {
       
-    //    enemyContext.anim.GetStateForAnimation(StateType);
         enemyContext.enemyMotor.StopAgent();
 
         // attackStates List empty
@@ -31,13 +30,11 @@ public class ChoseAttackState : MonoBehaviour , IEnemyStates
             
         }
 
-       
-
     }
 
     public void Exit()
     {
-      //  enemyContext.anim.animator.SetBool("ChoseAttack", false);
+
     }
 
     public void Tick()

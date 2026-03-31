@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using Unity.Mathematics;
@@ -8,6 +8,7 @@ using UnityEngine;
 public class SphereSweepAttackNode : Node
 {
     private BossContext context;
+    private bool isRunning;
 
     private bool started; // did node Start
     
@@ -31,7 +32,7 @@ public class SphereSweepAttackNode : Node
     private GameObject sphereAttack;
     private SphereAttackControl sphereAttackControl;
 
-
+    private Vector3 targetPos;
 
 
     private float animationTimer;
@@ -41,22 +42,31 @@ public class SphereSweepAttackNode : Node
     }
     public override NodeState Evaluate()
     {
-        //test use
-        //never enable this attack if false
-        if (!context.sphereSweepEnabled) { return NodeState.Failure; }
-       
+        //  if disabled → skip
+        if (!context.sphereSweepEnabled) return NodeState.Failure;
+
+        //  if another attack running → do nothing
+        if (context.isAttackRunning && !isRunning)  return NodeState.Failure;
+
         // Phase 1: first time entering node
-        if (!started)
+
+        if (!isRunning)
+        {
+            Debug.Log("SphereAttack Start");
+            context.isAttackRunning = true;
+            isRunning = true;
+        }
+
+            if (!started)
         {
             StartAttack();
-
+            context.mechAnimation.PlayerSphereSweepAttack();
             return NodeState.Running;
         }
 
         if (animationTimer < context.sphereAnimationDuration)
         {
-            animationTimer += Time.deltaTime;
-            context.mechAnimation.PlayerSphereSweepAttack();
+            animationTimer += Time.deltaTime; 
             return NodeState.Running;
         }
 
@@ -129,15 +139,11 @@ public class SphereSweepAttackNode : Node
 
         if (!spheresStarted)
         {
-            int index;
-            if (context.sphereAttackPrefab.Length>=2)
-            { 
-                index=UnityEngine.Random.Range(0, context.sphereAttackPrefab.Length);
-            }
-            else
+            int index = 0;
+            if (context.sphereAttackPrefab != null)
             {
-                return 0 ;
-            }
+                index = UnityEngine.Random.Range(0, context.sphereAttackPrefab.Length);
+            }   
             sphereAttack = GameObject.Instantiate(context.sphereAttackPrefab[index], leftedge, quaternion.identity);
             sphereAttackControl=sphereAttack.GetComponent<SphereAttackControl>();
             spheresStarted = true;
@@ -157,18 +163,20 @@ public class SphereSweepAttackNode : Node
             return NodeState.Running;
         }
         sphereAttackControl.MoveToTarget(rightedge,context.sphereAttackMoveSpeed);
-       
-      if(Vector3.Distance(sphereAttack.transform.position, rightedge) < 0.05)
+
+        //Check did the attack Finish
+
+        if (Vector3.Distance(sphereAttack.transform.position, rightedge) < 0.05)
         {
-
+            context.isAttackRunning = false;
+            context.sphereSweepEnabled = true; // disable after use (optional)
+            isRunning = false;
             EndAttack();
-            NodeColdown.SetColdown(false);
-            return NodeState.Running ;
+            return NodeState.Success;
+          
         }
-  
 
-
-        return NodeState.Success;
+        return NodeState.Running;
     }
 
     private void StartAttack()
@@ -182,26 +190,33 @@ public class SphereSweepAttackNode : Node
 
     }
 
-
     //reset refference for next loop of sequence 
     private void EndAttack()
     {
-        if (telegraphReference != null)
-        {
-            GameObject.Destroy(telegraphReference);
-            telegraphReference = null;
+        if (telegraphReference != null)GameObject.Destroy(telegraphReference);
 
-        }
+        if (sphereAttack != null) GameObject.Destroy(sphereAttack);
         
-        if(sphereAttack != null)
-        {
-            GameObject.Destroy(sphereAttack);
-            sphereAttack = null;
-            sphereAttackControl = null;
-        }
+        ResetNodeState();
+    }
 
-
+    private void ResetNodeState()
+    {
         started = false;
+        isRunning = false;
+
+        animationTimer = 0f;
+        trackingtimer = 0f;
+        fillTimer = 0f;
+        sizeTimer = 0f;
+
+        lockedPosition = false;
+        spheresStarted = false;
+
+        telegraphReference = null;
+        telegraphVisual = null;
+        sphereAttack = null;
+        sphereAttackControl = null;
     }
 
     private GameObject SpawnTelegraph()
@@ -232,20 +247,6 @@ public class SphereSweepAttackNode : Node
         return pos;
     }
 
-    public void TestUseConfig()
-    {
-        if (!context.sphereSweepEnabled)
-        {
-            Debug.Log("[SphereSweepAttackNode] Sphere sweep attack is disabled.");
-            return;
-        }
-
-        float trackingDuration = context.telegraphTrackingDuration;
-        float fillTime = context.fillDuration;
-        float moveSpeed = context.sphereAttackMoveSpeed;
-
-        Debug.Log($"Use attack config -> tracking={trackingDuration}, fill={fillTime}, moveSpeed={moveSpeed}");
-    }
 
 }
 

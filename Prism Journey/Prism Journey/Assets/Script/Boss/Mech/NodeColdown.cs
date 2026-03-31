@@ -19,7 +19,7 @@ public class NodeColdown :Node
     public override NodeState Evaluate()
     {
 
-        if (isColdown)
+        if (isColdown==true)
         {
             return NodeState.Success;
         }

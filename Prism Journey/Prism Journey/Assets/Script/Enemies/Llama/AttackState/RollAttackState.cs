@@ -19,14 +19,14 @@ public class RollAttackState : MonoBehaviour, IEnemyStates
         hitPlayer = false;
         timer = 0;
         enemyContext.enemyMotor.StopAgent();
-      //  enemyContext.anim.GetStateForAnimation(StateType);
+        enemyContext.anim.PlayRoll();
         enemyContext.enemyMotor.FaceTarget(enemyContext.player.position);
         enemyContext.enemyMotor.SetChaseSpeed(enemyContext.enemyConfig.rollingSpeed);
     }
 
     public void Exit()
     {
-       // enemyContext.anim.animator.SetBool("Rolling", false);
+      
         hitPlayer = false;
     }
 

@@ -7,6 +7,7 @@ public class BossBT : MonoBehaviour
   
 
     [SerializeField]private BossContext context;
+    private AttackManagerNode attackerManager;
     public BossContext BossContext => context;
 
     private Node root; // the top node of the behavior tree
@@ -23,11 +24,18 @@ public class BossBT : MonoBehaviour
         Node phase1 = new Sequence(new List<Node>
         {
             new CheckBossHPRange(context,context.bossConfig.maxHP,context.bossConfig.minHP), // check if hp is in phase 1 range
-            new NodeColdown(2f),
-            new SphereSweepAttackNode(context)
+           // new NodeColdown(2f),
+            new SphereSweepAttackNode(context),
+            new BubbleAttackNode(context)
 
-                
         });
+
+        Node Phrase1 = new Selector(new List<Node> {
+        new AttackManagerNode(context)
+
+
+        });
+
 
         // ---------------- PHASE 2 ----------------
         // If HP is between 79.9 and 50, boss randomly uses Zone or Hindrance
@@ -38,8 +46,8 @@ public class BossBT : MonoBehaviour
         // Root tries phase1 first, then phase2, then idle
         root = new Selector(new List<Node>
         {
-            new IdleNode(context),
-            phase1,         
+           new IdleNode(context),
+            Phrase1,         
               
         });
     }
