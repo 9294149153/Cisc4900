@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee2a69e8523ad44881c9d15ee4663e3, type: 3}
+  m_Name: BubbleAttackData
+  m_EditorClassIdentifier: 
+  animationDuration: 1
+  telegraphPrefab: {fileID: 983970816865492081, guid: daa0127c04143d34bb46c19cab5db1de,
+    type: 3}
+  telegraphWidth: 1
+  telegraphLength: 10
+  trackingDuration: 1
+  trackingSpeed: 8
+  chargeDuration: 1
+  actorPrefab:
+  - {fileID: 4322515381802720571, guid: 0f488b7acd999ed4c9ada39420c2af7d, type: 3}
+  - {fileID: 1209647956953704151, guid: 7a42038c9ed6a9947b2983663be99090, type: 3}
+  damageDeal: 5
+  moveSpeed: 25
+  reachThreshold: 0.05
+  spawnAmount: 5
+  actorHeightOffset: 1.5

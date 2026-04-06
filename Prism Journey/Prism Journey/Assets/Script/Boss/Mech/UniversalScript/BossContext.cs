@@ -15,6 +15,50 @@ public class BossContext :MonoBehaviour
     public Transform TelegraphSpawnPosition;
     public Transform plane;
 
+
+    [Header("Boss HP  Stats")]
+    public float maxHp = 100f;
+    public float currentHp = 50f;
+
+
+    [Header("Difficulty")]
+    public BossDifficulty currentDifficulty = BossDifficulty.Easy;
+
+
+
+    [Header("Runtime State")]
+    public  BossPhrase currentPhrase = BossPhrase.Phase1;
+    public BossAttackType currentAttackType = BossAttackType.None;
+    public bool isAttackRunning = false;
+    public bool hiddenPhaseEntered = false;
+
+
+    [Header("Remote Config Runtime")]
+    public MechBossRemoteConfig remoteConfig;
+
+
+    [Header("Attack Data Assets")]
+    public SphereAttackData sphereSweepData;
+   public BubbleAttackData bubbleAttackData;
+
+
+
+
+
+
+
+public BubbleAttackData bubbleAttackData2;
+
+
+
+
+
+
+
+
+
+
+
     [Header("IdleNode")]
     public bool idleEnable = true;
 
@@ -71,9 +115,6 @@ public class BossContext :MonoBehaviour
 
 
     [Header("AttackStatsManager")]
-
-    public bool isAttackRunning;
-
     public bool sphereSweepEnabled = true;
     public bool bubbleAttackEnable = true;
 

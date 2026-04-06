@@ -16,18 +16,13 @@ public class Player : MonoBehaviour
     {
         playerInputSystem=GetComponent<PlayerInputSystem>();
     }
-
+        
 
     private void Update()
     {
 
         Movement();
 
-
-      
-            
-       
-        
     }
 
     public void Movement()
@@ -68,6 +63,10 @@ public class Player : MonoBehaviour
         return moveDir;
     }
   
-
+    
+    public void SetScirptActive(bool value)
+    {
+        this.enabled= value;
+    }
 
 }

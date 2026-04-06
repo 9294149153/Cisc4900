@@ -60,67 +60,73 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Boss\Mech\Sequence.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyBrain.cs" />
-    <Compile Include="Assets\TestingScript\NavMeshTesting.cs" />
     <Compile Include="Assets\GameObjectIdentity.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Core\Node.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Interface\IAttackActor.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Config\MechBossRemoteConfig.cs" />
     <Compile Include="Assets\UnityAssetStore\VFX\fireAttackEffects\scripts\fireBallScript.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\Selector.cs" />
     <Compile Include="Assets\UnityAssetStore\VFX\fireAttackEffects\scripts\InstantiateScript.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\Scriptable\EnemyAttackConfig.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Health\BossHealth.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorDetection.cs" />
     <Compile Include="Assets\Script\Player\PlayerInputSystem.cs" />
     <Compile Include="Assets\Script\Player\PlayerVisualFromMatieral.cs" />
-    <Compile Include="Assets\TestPrefab\MechBoss\AttackPrefab\SphereAttack\SphereAttackControl.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\NodeState.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Core\BossPhraseManager.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Brain\BossAttackPool.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Brain\BossAttackOption.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\SphereSweepNode\SphereSweepNode.cs" />
+    <Compile Include="Assets\Telegraph\RetangleShapeTelegraphCode\RectangleTelegraphController.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyMotor.cs" />
     <Compile Include="Assets\Script\Player\PlayerColor.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\NodeBase\BossAttackRuntimeBase.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemySensor.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\IdleState.cs" />
-    <Compile Include="Assets\Telegraph\RetangleShapeTelegraphCode\RectangleTelegraphTest.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AnimationBridge.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\BossBT.cs" />
     <Compile Include="Assets\Script\Boss\Mech\UniversalScript\BossContext.cs" />
-    <Compile Include="Assets\Telegraph\RetangleShapeTelegraphCode\RectangleTelegrahVisual.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\BubbleNode\BubbleAttackRuntimeData.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\MeleeAttackState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyState.cs" />
     <Compile Include="Assets\Script\Boss\Mech\Animation\MechBossAnimationBrain.cs" />
-    <Compile Include="Assets\TestPrefab\MechBoss\AttackPrefab\BubbleAttack\BubbleControl.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorSwap.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\ConfigScriptableObject\ScriptableObjectScript\SphereAttackData.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Core\BossEnum.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorObject.cs" />
     <Compile Include="Assets\Script\Player\PlayerAnimationBrain.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\ColorObjectVisual.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\RollAttackState.cs" />
     <Compile Include="Assets\Script\ScriptableObjectScript\ColorIdentity.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\ConfigScriptableObject\ScriptableObjectScript\BubleAttackData.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\SpitAttackState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyConfig.cs" />
-    <Compile Include="Assets\Telegraph\SphereShapeTelegraphCode\SphereTelegraphVisual.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\AttackNode\AttackManagerNode.cs" />
     <Compile Include="Assets\Script\Player\Player.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\IdleNode.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Core\NodeState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\SphereProjectile.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\BossHealth.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\NodeBase\BossAttackBaseNode.cs" />
     <Compile Include="Assets\Script\Boss\Mech\UniversalScript\BossConfig.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\NodeColdown.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\IdleNode\IdleNode.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\BubbleNode\BubbleNode.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyContext.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Brain\AttackSelector.cs" />
     <Compile Include="Assets\Script\Interface\Damage\IDamageable.cs" />
     <Compile Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\WallDetection.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\Node.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\IEnemyStates.cs" />
     <Compile Include="Assets\RemoteConfig\BossRemoteConfigLoader.cs" />
     <Compile Include="Assets\RemoteConfig\MechBossRemoteConfigData.cs" />
     <Compile Include="Assets\PlayerInputAction.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\BubbleNode\BubbleSphereController.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\ChoseAttackState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\ChaseState.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\IColorInteractable.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\AttackNode\SphereSweepAttackNode.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\CheckBossHPRange.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\SphereSweepNode\SphereAttackRuntimeData.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Brain\BossBrain.cs" />
     <Compile Include="Assets\RemoteConfig\MechBossLocalConfigSO.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\EnemyDamage.cs" />
     <Compile Include="Assets\Script\Player\PlayerHealth.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\RandomSelector.cs" />
-    <Compile Include="Assets\Script\Boss\Mech\AttackNode\BubbleAttackNode.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\SphereSweepNode\SphereAttackActor.cs" />
+    <Compile Include="Assets\Telegraph\SphereShapeTelegraphCode\SphereTelegraphController.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\Interface\Itelegraph.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Edge Detection.shader" />
@@ -138,6 +144,7 @@
     <None Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Snow.shader" />
     <None Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Lava3D.shader" />
     <None Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
+    <None Include="Assets\UnityAssetStore\Visual\Quirky Series\_Shader\SoftSurface.shader" />
     <None Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -965,20 +972,12 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityHFSM">
-      <HintPath>Library\ScriptAssemblies\UnityHFSM.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
@@ -989,12 +988,92 @@
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Animation.Rigging.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Settings.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Settings.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PPv2URPConverters">
+      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+      <HintPath>Library\ScriptAssemblies\Unity.Animation.Rigging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityHFSM">
+      <HintPath>Library\ScriptAssemblies\UnityHFSM.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.ProBuilder">
@@ -1033,36 +1112,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Internal">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Internal.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
@@ -1089,14 +1144,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.AI.Navigation.Updater">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
       <Private>False</Private>
@@ -1109,20 +1156,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Settings.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Settings.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PPv2URPConverters">
-      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
@@ -1133,32 +1172,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

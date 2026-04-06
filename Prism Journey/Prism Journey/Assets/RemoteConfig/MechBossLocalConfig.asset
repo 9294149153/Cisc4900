@@ -16,7 +16,7 @@ MonoBehaviour:
   bossId: mech_boss
   useRemoteConfig: 1
   difficulty: normal
-  sphereSweepEnabled: 0
+  sphereSweepEnabled: 1
   telegraphTrackingDuration: 3.5
   fillDuration: 1.2
   telegraphWidth: 1

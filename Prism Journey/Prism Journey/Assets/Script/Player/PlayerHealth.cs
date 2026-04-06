@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour,IDamageable
     private float currentHealth;
 
     private bool canTakeDamage;
-    [SerializeField] private float damageCooldown = 1f;
+    [SerializeField] private float damageCooldown = 0.4f;
 
     [Header("PlayerAnimation Refference && active Condition")]
     [SerializeField]private PlayerAnimationBrain playerAnim;

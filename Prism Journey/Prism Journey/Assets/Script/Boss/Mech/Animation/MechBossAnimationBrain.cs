@@ -71,8 +71,6 @@ public class MechBossAnimationBrain : MonoBehaviour
 
 
 
-
-
 public enum MechBossAnimation
 {
 
