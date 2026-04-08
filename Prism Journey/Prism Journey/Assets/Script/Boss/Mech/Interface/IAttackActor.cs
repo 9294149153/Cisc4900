@@ -13,14 +13,27 @@ public interface IAttackActor
     void Initialize(Vector3 position, Quaternion rotation);
 
 
+    public virtual void SetScale(Vector3 scale)
+    {
+        Debug.Log("Used Base SetScale");
+    }
     // Moves actor toward a target.
-    void MoveToward(Vector3 targetPosition, float speed);
+    virtual void MoveToward(Vector3 targetPosition, float speed)
+    {
+
+    }
 
     // Scales actor over time.
-    void SetScaleOverTime(float speed);
+   virtual  void SetScaleOverTime(float speed)
+    {
+
+    }
 
     // Returns true if actor reached target.
-    bool HasReached(Vector3 targetPosition, float threshold);
+     virtual bool HasReached(Vector3 targetPosition, float threshold)
+    {
+       return false;
+    }
 
     // Cleans up actor object.
     void Cleanup();

@@ -40,14 +40,7 @@ public class BossContext :MonoBehaviour
     [Header("Attack Data Assets")]
     public SphereAttackData sphereSweepData;
    public BubbleAttackData bubbleAttackData;
-
-
-
-
-
-
-
-public BubbleAttackData bubbleAttackData2;
+   public LaserAttackData laserAttackData;
 
 
 

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d4184eba4441d46a69ae10a338b00d, type: 3}
+  m_Name: LaserAttackData
+  m_EditorClassIdentifier: 
+  enabled: 1
+  animationDuration: 0.8
+  telegraphPrefab: {fileID: 983970816865492081, guid: daa0127c04143d34bb46c19cab5db1de,
+    type: 3}
+  telegraphWidth: 1
+  telegraphLength: 10
+  trackingDuration: 5
+  trackingSpeed: 15
+  fillDuration: 1
+  laserActorPrefab:
+  - {fileID: 2624921286418327322, guid: a3b67e6227919504bb961cc7c3ab349f, type: 3}
+  attackSize: 0.5
+  damageDeal: 5
+  spwanAmount: 5

@@ -77,9 +77,11 @@
     <Compile Include="Assets\Script\Boss\Mech\Brain\BossAttackOption.cs" />
     <Compile Include="Assets\Script\Boss\Mech\RunNode\SphereSweepNode\SphereSweepNode.cs" />
     <Compile Include="Assets\Telegraph\RetangleShapeTelegraphCode\RectangleTelegraphController.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\LaserNode\LaserAttackRunTime.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemyMotor.cs" />
     <Compile Include="Assets\Script\Player\PlayerColor.cs" />
     <Compile Include="Assets\Script\Boss\Mech\NodeBase\BossAttackRuntimeBase.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\ConfigScriptableObject\ScriptableObjectScript\LaserAttackData.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\EnemySensor.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\IdleState.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AnimationBridge.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="Assets\Script\Boss\Mech\Brain\AttackSelector.cs" />
     <Compile Include="Assets\Script\Interface\Damage\IDamageable.cs" />
     <Compile Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Plexus\Plexus.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\LaserNode\LaserNode.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\WallDetection.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\IEnemyStates.cs" />
     <Compile Include="Assets\RemoteConfig\BossRemoteConfigLoader.cs" />
@@ -122,6 +125,7 @@
     <Compile Include="Assets\Script\Boss\Mech\RunNode\SphereSweepNode\SphereAttackRuntimeData.cs" />
     <Compile Include="Assets\Script\Boss\Mech\Brain\BossBrain.cs" />
     <Compile Include="Assets\RemoteConfig\MechBossLocalConfigSO.cs" />
+    <Compile Include="Assets\Script\Boss\Mech\RunNode\LaserNode\LaserAttackActor.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\EnemyDamage.cs" />
     <Compile Include="Assets\Script\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Script\Boss\Mech\RunNode\SphereSweepNode\SphereAttackActor.cs" />
@@ -146,6 +150,7 @@
     <None Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Force Field.shader" />
     <None Include="Assets\UnityAssetStore\Visual\Quirky Series\_Shader\SoftSurface.shader" />
     <None Include="Assets\UnityAssetStore\Ultimate 10 Plus Shaders\Shaders\Simple Sine Wave.shader" />
+    <None Include="Assets\Hovl Studio\Magic effects pack\Demo scene\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

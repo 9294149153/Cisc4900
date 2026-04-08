@@ -13,6 +13,7 @@ public class MechBossRemoteConfig
     public IdleConfig IdleConfig = new IdleConfig();
     public SphereSweepConfig sphereSweepConfig= new SphereSweepConfig();
     public BubbleAttackConfig bubleAttackConfig= new BubbleAttackConfig();
+    public LaserAttackConfig laserAttackConfig= new LaserAttackConfig();
     public PhraseHolderConfig phraseHolderConfig= new PhraseHolderConfig();
     public DifficultyConfig difficultyConfig = new DifficultyConfig();
    
@@ -51,9 +52,9 @@ public class SphereSweepConfig
     public int   spawnAmount = 1;
     public float telegraphWidth = 2f;
     public float telegraphLength = 10f;
-    public float sphereScaleDuration = 2;
-    public float sphereScaleSpeed = 5f;
-    public float moveSpeed = 10f;
+    public float sphereScaleDuration = 1;
+    public float sphereScaleSpeed = 8f;
+    public float moveSpeed = 30f;
     public float actorHeightOffset = 1.5f;
 }
 
@@ -71,6 +72,23 @@ public class BubbleAttackConfig
     public float bubbleRadius = 2f;
     public float bubbleAttackDuration = 0.5f;
     public float fallSpeed = 9f;
-    public float damageDeal = 5f;
+    public float damageDeal = 1f;
     public int spwanAmount = 5;
+}
+
+public class LaserAttackConfig
+{
+
+    public bool enabled = true;
+    public float animationDuration = 1f;
+    public float trackingDuration = 15f;
+    public float trackingSpeed = 15f;
+    public float fillDuration = 1.0f;
+    public float telegraphWidth = 8f;
+    public float telegraphLength = 8f;
+    public float attackDuration =0.5f;
+    public float fallSpeed = 9f;
+    public float damageDeal = 2f;
+    public int spwanAmount = 5;
+
 }

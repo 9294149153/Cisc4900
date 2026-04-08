@@ -15,7 +15,7 @@ public enum BossAttackType
     None,
     SphereSweepAttack,
     BubbleAttack,
-    Attack3,
+    LaserAttack,
     Attack4
 }
 

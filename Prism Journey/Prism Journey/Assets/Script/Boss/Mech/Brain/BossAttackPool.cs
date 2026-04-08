@@ -28,7 +28,9 @@ public class BossAttackPool
                 break;
 
             case BossPhrase.Phase3:
-
+                AddSphereIfValid(attackOption);
+                AddBubbleIfValid(attackOption);
+                AddLaserIfValid(attackOption);
                 break;
 
             case BossPhrase.Phase4:
@@ -62,6 +64,16 @@ public class BossAttackPool
         }
     }
 
+    private void AddLaserIfValid(List<BossAttackOption>attacks)
+    {
+        // check are the config enable this attack , if yes add to the pool if no then ignore 
+        if (context.remoteConfig.laserAttackConfig.enabled)
+        {
+            attacks.Add(new BossAttackOption(
+                BossAttackType.LaserAttack
+            ));
+        }
+    }
 
 }
 
