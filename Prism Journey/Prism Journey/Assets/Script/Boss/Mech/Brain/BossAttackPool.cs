@@ -34,7 +34,10 @@ public class BossAttackPool
                 break;
 
             case BossPhrase.Phase4:
-
+               // AddSphereIfValid(attackOption);
+               // AddBubbleIfValid(attackOption);
+                AddLaserIfValid(attackOption);
+                AddBlackHoleIfValid(attackOption);
                 break;
         }   
 
@@ -71,6 +74,16 @@ public class BossAttackPool
         {
             attacks.Add(new BossAttackOption(
                 BossAttackType.LaserAttack
+            ));
+        }
+    }
+    private void AddBlackHoleIfValid(List<BossAttackOption> attacks)
+    {
+        // check are the config enable this attack , if yes add to the pool if no then ignore 
+        if (context.remoteConfig.bubleAttackConfig.enabled)
+        {
+            attacks.Add(new BossAttackOption(
+                BossAttackType.BlackHoleAttack
             ));
         }
     }

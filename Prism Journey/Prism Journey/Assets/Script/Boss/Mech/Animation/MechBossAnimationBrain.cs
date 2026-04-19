@@ -4,76 +4,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 
+public enum BossAnimationStage
+{
+    None,
+    Idle,
+    Attack
+}
 public class MechBossAnimationBrain : MonoBehaviour
 {
 
-    private readonly static int[] animations =
-    {
-        Animator.StringToHash("Empty"),
-        Animator.StringToHash("MechIdle"),
-        Animator.StringToHash("SphereSweepAttack")
-    };
-
-    [Header("Crossfade Settings")]
-    [SerializeField] private float fadeDuration = 0.15f;
 
     [SerializeField] private Animator animator;
-    private int currentState;
+    private BossAnimationStage currentState;
 
     private void Awake()
     {
         if (animator == null)
         {
-            Debug.LogError( $"[MechBossAnimationBrain] Animator is NULL on {gameObject.name}",this);
+            Debug.LogError($"[MechBossAnimationBrain] Animator is NULL on {gameObject.name}", this);
 
         }
-
+        currentState = BossAnimationStage.None;
     }
 
-    public void PlayEmpty()
+    private void Update()
     {
-        PlayAnimation(animations[0]);
-    }
-    public void PlayIdle()
-    {
-        PlayAnimation(animations[1]);
-        
+        switch (currentState)
+        {
+            case BossAnimationStage.None:
+                // Not Play Animation on this stage
+                break;
+
+        case BossAnimationStage.Idle:
+                // PLayer After the Attack Aniamtion of the Boss
+                animator.SetBool("Idle", true);
+                break;
+        case BossAnimationStage.Attack:
+                //PLay while  enter the attack Node
+                animator.SetBool("Idle", false);
+                animator.SetTrigger("Attack");
+               
+                break;
+        }
     }
 
-    public void PlayerSphereSweepAttack()
+    public void SetCurrentAniamitonStage(BossAnimationStage aniamtionStage)
     {
-        PlayAnimation(animations[2]);
-    }
-
-    private void PlayAnimation(int newState)
-    {
-
-        // Stop if Animator is missing
         if (animator == null)
         {
-            Debug.LogWarning("Animator is missing.");
-            return;
+            Debug.LogError($"[MechBossAnimationBrain]+ Animator Component are missing | animator={animator}",this);
         }
 
-        // Do not replay the same animation again and again
-        if (currentState == newState)
-            return;
-
-        currentState = newState;
-
-        // Smoothly change animation
-        animator.CrossFade(newState, fadeDuration);
+        if (currentState == aniamtionStage) return;
+        
+        currentState = aniamtionStage;
     }
-
-
-   
-}
-
-
-
-public enum MechBossAnimation
-{
-
-    Idle,
-    SphereSweepAttack
 }

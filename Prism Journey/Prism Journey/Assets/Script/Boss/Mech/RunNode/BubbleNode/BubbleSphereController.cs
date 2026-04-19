@@ -46,7 +46,7 @@ public class BubbleSphereController : MonoBehaviour, IAttackActor
                 // Deal damage to boss if player has the same color as this object
                 if (player.GetCurrentColorIdentity() == color)
                 {
-                    context.bossHealth.TakeDamage(context.bubbleDamageToBoss);
+                    context.bossHealth.TakeDamage(context.remoteConfig.bubleAttackConfig.damageDealToBoss);
                     DestoryObject();
                 }
                 else

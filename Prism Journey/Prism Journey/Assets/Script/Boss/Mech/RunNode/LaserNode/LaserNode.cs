@@ -22,6 +22,7 @@ public class LaserNode : BossAttackBaseNode<LaserAttackConfig, LaserAttackRunTim
         //If have animaiton reference then play aniamtion 
         if (context.mechAnimation != null)
         {
+            context.mechAnimation.SetCurrentAniamitonStage(BossAnimationStage.Attack);
             Debug.Log("aniamiton played for Laser node");// has not make it yet just use debug.log for currency
         }
         //Move to Next Phrase After call
@@ -35,7 +36,7 @@ public class LaserNode : BossAttackBaseNode<LaserAttackConfig, LaserAttackRunTim
         {
             return NodeState.Failure;
         }
-        context.mechAnimation.PlayEmpty();
+        context.mechAnimation.SetCurrentAniamitonStage(BossAnimationStage.Idle);
         if (runtimeData.PhraseTimer > data.animationDuration)
         {
             AdvancePhrase(AttackPhrase.SpawnTelegraph);

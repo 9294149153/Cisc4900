@@ -4,32 +4,43 @@ using UnityEngine;
 
 public class ColorObjectVisual : MonoBehaviour
 {
-    private MeshRenderer meshRenderer;
-
+    [SerializeField]private MeshRenderer meshRenderer;
    [SerializeField] private ColorObject colorObject;
 
     private void Awake()
     {
        
-        meshRenderer = GetComponent<MeshRenderer>();
-       
+
+        if (meshRenderer == null)
+            meshRenderer = GetComponent<MeshRenderer>();
+
+        if (colorObject == null)
+            colorObject = GetComponentInParent<ColorObject>();
 
     }
     private void OnEnable()
     {
-        colorObject.OnColorVisualChange += ColorObject_OnColorVisualChange;
+           if (colorObject != null)
+            colorObject.OnColorVisualChange += ColorObject_OnColorVisualChange;
+       
 
     }
     private void OnDisable()
     {
-        colorObject.OnColorVisualChange -= ColorObject_OnColorVisualChange;
+
+        if (colorObject != null)
+            colorObject.OnColorVisualChange -= ColorObject_OnColorVisualChange;
     }
+
    
 
     private void ColorObject_OnColorVisualChange(object sender, ColorObject.OnColorVisualChangeEventArg e)
     {
-        meshRenderer.material.color=e.color.displayColor;
+        if (colorObject == null) { Debug.LogError($"[ColorObjectVisual] + colorObject reference are missing  colorObject={colorObject}", this); return; }
+        meshRenderer.material=colorObject.GetColorIdentity().material;
+
     }
 
     
+
 }

@@ -13,7 +13,7 @@ public interface IAttackActor
     void Initialize(Vector3 position, Quaternion rotation);
 
 
-    public virtual void SetScale(Vector3 scale)
+    public virtual void SetDimension(Vector3 scale)
     {
         Debug.Log("Used Base SetScale");
     }
@@ -24,7 +24,7 @@ public interface IAttackActor
     }
 
     // Scales actor over time.
-   virtual  void SetScaleOverTime(float speed)
+   virtual void SetScaleOverTime(float speed)
     {
 
     }

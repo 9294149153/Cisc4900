@@ -9,7 +9,7 @@ public class WallDetection : MonoBehaviour
 
     [Inspectable]private ColorObject colorObject;
 
-    [SerializeField] private BoxCollider wallCollider;
+    [SerializeField] private Collider wallCollider;
     [SerializeField] private PlayerColor playerColor;
 
     private void Awake()
@@ -17,7 +17,14 @@ public class WallDetection : MonoBehaviour
         colorObject = GetComponent<ColorObject>();
 
         if (wallCollider == null)
-            wallCollider = GetComponent<BoxCollider>();
+            wallCollider = GetComponent<Collider>();
+
+        playerColor = FindAnyObjectByType<PlayerColor>();
+
+        if(wallCollider != null)
+        {
+            wallCollider.isTrigger=true;
+        }
     }
 
     private void OnEnable()
@@ -36,7 +43,7 @@ public class WallDetection : MonoBehaviour
     {
         if (colorObject == null || wallCollider == null) return;
 
-        bool canPass = colorObject.GetColorIdentity() == playerCurrentColor;
+        bool canPass = colorObject.GetColorIdentity() != playerCurrentColor;
         wallCollider.isTrigger = canPass;
 
         Debug.Log($"{gameObject.name} | wallColor={colorObject.GetColorIdentity()?.name} | playerColor={playerCurrentColor?.name} | isTrigger={canPass}");

@@ -22,7 +22,7 @@ public class SphereSweepNode : BossAttackBaseNode<SphereSweepConfig, SphereAttac
         //Call the Animation if boos has Animation
         if (context.mechAnimation != null)
         {
-            context.mechAnimation.PlayerSphereSweepAttack();
+            context.mechAnimation.SetCurrentAniamitonStage(BossAnimationStage.Attack);
 
         }
         //Move to Next Phrase After call
@@ -44,14 +44,9 @@ public class SphereSweepNode : BossAttackBaseNode<SphereSweepConfig, SphereAttac
         {
            
             AdvancePhrase(AttackPhrase.SpawnTelegraph);
-            context.mechAnimation.PlayEmpty();
+            context.mechAnimation.SetCurrentAniamitonStage(BossAnimationStage.Idle);
         }
 
-        // Animation Phrase back to Empty
-        if (context.mechAnimation != null)
-        {
-            context.mechAnimation.PlayEmpty();
-        }
 
         //Loop On this Function until Success
         return NodeState.Running;
@@ -124,7 +119,7 @@ public class SphereSweepNode : BossAttackBaseNode<SphereSweepConfig, SphereAttac
             return FailToCleanup("Telegraph missing before attack spawn.");
 
         // Actor prefab missing? Cleanup.
-        if (context.sphereAttackPrefab .Length==0)return FailToCleanup("Sphere actor prefab missing.");
+        if (context.sphereSweepData.sphereActorPrefab .Length==0)return FailToCleanup("Sphere actor prefab missing.");
 
         //Spawn attack to correct position 
         //Will only call Once

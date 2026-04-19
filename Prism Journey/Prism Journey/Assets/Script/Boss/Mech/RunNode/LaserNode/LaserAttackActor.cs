@@ -56,15 +56,7 @@ public class LaserAttackActor : MonoBehaviour, IAttackActor
         }
     }
 
-    public virtual void SetScale(Vector3 scale)
-    {
-        transform.localScale = Vector3.one;
-        if (efftect != null)
-        {
-            efftect.transform.localScale = Vector3.one;
-            efftect.transform.localScale=scale;
-        }
-    }
+   
     public void Initialize(Vector3 position, Quaternion rotation )
     {
         efftect.transform.localPosition = Vector3.zero;

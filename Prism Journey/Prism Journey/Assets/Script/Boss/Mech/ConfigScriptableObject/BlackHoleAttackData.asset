@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8482b13a354eeda4498f99c63b104b70, type: 3}
+  m_Name: BlackHoleAttackData
+  m_EditorClassIdentifier: 
+  animationDuration: 1
+  telegraphPrefab: {fileID: 983970816865492081, guid: daa0127c04143d34bb46c19cab5db1de,
+    type: 3}
+  telegraphWidth: 1
+  telegraphLength: 10
+  trackingDuration: 1
+  trackingSpeed: 8
+  chargeDuration: 1
+  actorPrefab:
+  - {fileID: 8472038935450144102, guid: f557866974b060c49b569cb20ef3eb4e, type: 3}
+  actorScaleDuration: 0.5
+  actorScaleSpeed: 8
+  moveSpeed: 25
+  reachThreshold: 0.05
+  spawnAmount: 1
+  actorHeightOffset: 1.5

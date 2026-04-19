@@ -14,6 +14,7 @@ public class MechBossRemoteConfig
     public SphereSweepConfig sphereSweepConfig= new SphereSweepConfig();
     public BubbleAttackConfig bubleAttackConfig= new BubbleAttackConfig();
     public LaserAttackConfig laserAttackConfig= new LaserAttackConfig();
+    public BlackHoleAttackConfig blackHoleAttackConfig= new BlackHoleAttackConfig();
     public PhraseHolderConfig phraseHolderConfig= new PhraseHolderConfig();
     public DifficultyConfig difficultyConfig = new DifficultyConfig();
    
@@ -72,7 +73,8 @@ public class BubbleAttackConfig
     public float bubbleRadius = 2f;
     public float bubbleAttackDuration = 0.5f;
     public float fallSpeed = 9f;
-    public float damageDeal = 1f;
+    public float damageDeal = 10f;
+    public float damageDealToBoss=1f;
     public int spwanAmount = 5;
 }
 
@@ -91,4 +93,19 @@ public class LaserAttackConfig
     public float damageDeal = 2f;
     public int spwanAmount = 5;
 
+}
+
+public class BlackHoleAttackConfig
+{
+    public bool enabled = true;
+    public float animationDuration = 1f;
+    public float trackingDuration = 6f;
+    public float trackingSpeed = 13;
+    public float fillDuration = 1.0f;
+    public float telegraphWidth = 22f;
+    public float telegraphLength = 22f;
+    public float attackDuration = 0.5f;
+    public float fallSpeed = 9f;
+    public float damageDeal = 20f;
+    public int spwanAmount = 1;
 }

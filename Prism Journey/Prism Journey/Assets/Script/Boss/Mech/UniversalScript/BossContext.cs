@@ -41,6 +41,7 @@ public class BossContext :MonoBehaviour
     public SphereAttackData sphereSweepData;
    public BubbleAttackData bubbleAttackData;
    public LaserAttackData laserAttackData;
+   public BlackHoleAttackData blackHoleAttackData;
 
 
 
@@ -50,8 +51,7 @@ public class BossContext :MonoBehaviour
 
 
 
-
-
+/*
     [Header("IdleNode")]
     public bool idleEnable = true;
 
@@ -148,7 +148,7 @@ public class BossContext :MonoBehaviour
         Debug.Log("[MechBossContext] Config applied.");
     }
 
-  
+  */
    
 
 }

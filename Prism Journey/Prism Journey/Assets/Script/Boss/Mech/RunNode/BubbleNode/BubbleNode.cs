@@ -25,7 +25,8 @@ public class BubbleNode : BossAttackBaseNode<BubbleAttackConfig, BubbleAttackRun
         //If have animaiton reference then play aniamtion 
         if (context.mechAnimation != null)
         {
-            Debug.Log("aniamiton played for buble node");// has not make it yet just use debug.log for currency
+            context.mechAnimation.SetCurrentAniamitonStage(BossAnimationStage.Attack);
+            Debug.Log("aniamiton played for buble node");
         }
         //Move to Next Phrase After call
         AdvancePhrase(AttackPhrase.WaitAnimation);
@@ -39,7 +40,7 @@ public class BubbleNode : BossAttackBaseNode<BubbleAttackConfig, BubbleAttackRun
         {
             return NodeState.Failure;
         }
-        context.mechAnimation.PlayEmpty();
+        context.mechAnimation.SetCurrentAniamitonStage(BossAnimationStage.Idle);
         if (runtimeData.PhraseTimer > data.animationDuration)
         {
             AdvancePhrase(AttackPhrase.SpawnTelegraph);
@@ -206,7 +207,7 @@ public class BubbleNode : BossAttackBaseNode<BubbleAttackConfig, BubbleAttackRun
     }
     private void SpawnBubble()
     {
-        if (context.bubbleAttackData.actorPrefab == null || context.bubblePrefab.Length == 0)
+        if (context.bubbleAttackData.actorPrefab == null || context.bubbleAttackData.actorPrefab.Length == 0)
         {
             Debug.LogError("[BubbleAttackNode] bubblePrefab is null or empty.");
             return;
@@ -220,7 +221,7 @@ public class BubbleNode : BossAttackBaseNode<BubbleAttackConfig, BubbleAttackRun
 
         for (int i = 0; i < context.remoteConfig.bubleAttackConfig.spwanAmount; i++)
         {
-            int random = UnityEngine.Random.Range(0, context.bubblePrefab.Length);
+            int random = UnityEngine.Random.Range(0, context.bubbleAttackData.actorPrefab.Length);
 
             Vector3 offset = new Vector3(0, context.remoteConfig.bubleAttackConfig.bubbleSpawnHeight, 0);
             Vector3 pos = runtimeData.targetPosition[i] + offset;

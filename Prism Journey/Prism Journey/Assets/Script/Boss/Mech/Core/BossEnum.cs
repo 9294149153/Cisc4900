@@ -16,7 +16,7 @@ public enum BossAttackType
     SphereSweepAttack,
     BubbleAttack,
     LaserAttack,
-    Attack4
+    BlackHoleAttack
 }
 
 public enum BossDifficulty

@@ -15,3 +15,4 @@ MonoBehaviour:
   currentColorName: Blue
   displayColor: {r: 0, g: 0.2599914, b: 1, a: 0}
   swapIdentityColor: {fileID: 11400000, guid: 5eb332267814c3c4c8caf14ea878d3c1, type: 2}
+  material: {fileID: 2100000, guid: c53e9eead22930247be96cffbe1a1635, type: 2}

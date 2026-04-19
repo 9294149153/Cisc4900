@@ -9,7 +9,7 @@ public class ColorIdentity : ScriptableObject
     public Color displayColor;
     [SerializeField ] private ColorIdentity swapIdentityColor;
 
-
+    [SerializeField] public Material material;
 
     public ColorIdentity GetSwapColor()
     {

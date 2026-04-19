@@ -12,6 +12,7 @@ public class BossBrain : MonoBehaviour
     private Node sphereSweepNode;
     private Node bubbleNode;
     private Node laserNode;
+    private Node blackHoleNode;
 
     private BossPhraseManager phraseManager;
     private MechBossRemoteConfig bossRemoteConfig;
@@ -24,19 +25,23 @@ public class BossBrain : MonoBehaviour
     private bool waitingInIdle = true;
     private void Start()
     {
-        idleNode =new IdleNode(context);
+       
         phraseManager = new BossPhraseManager(context);
         attackPool = new BossAttackPool(context);
         attackSelector = new AttackSelector(context);
 
         bossRemoteConfig = new MechBossRemoteConfig(); // data container already define in the class
+
         context.remoteConfig = bossRemoteConfig;
+
         if (context.remoteConfig == null) { Debug.LogError($"[BossContext] {context.remoteConfig} = NUll | has no define",context); return; } // return if remoteconfig(fix Data) has not set 
+
+        idleNode = new IdleNode(context);
         sphereSweepNode = new SphereSweepNode(context, context.remoteConfig.sphereSweepConfig);
         bubbleNode=new BubbleNode(context, context.remoteConfig.bubleAttackConfig);
         laserNode= new LaserNode(context,context.remoteConfig.laserAttackConfig);
+        blackHoleNode = new BlackHoleNode(context, context.remoteConfig.blackHoleAttackConfig);
 
-       
     }
 
     private void Update()
@@ -120,6 +125,8 @@ public class BossBrain : MonoBehaviour
                 return bubbleNode;
             case BossAttackType.LaserAttack:
                 return laserNode;
+            case BossAttackType.BlackHoleAttack:
+                return blackHoleNode;
 
         }
         return null;
