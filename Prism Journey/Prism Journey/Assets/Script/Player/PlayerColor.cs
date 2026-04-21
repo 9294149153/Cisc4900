@@ -81,7 +81,7 @@ public class PlayerColor : MonoBehaviour
         }
         playerMaterialVisual.SetPlayerMatiral(mat);
 
-        playerMaterialVisual.SetPlayerMatiral(mat);
+       // playerMaterialVisual.SetPlayerMatiral(mat);
 
         WallDetection[] colorWalls = FindObjectsOfType<WallDetection>();
         foreach (WallDetection wall in colorWalls)
@@ -91,13 +91,6 @@ public class PlayerColor : MonoBehaviour
 
         OnWallColliderDetection?.Invoke(this, new OnColorChanageEventArgs { color = currentColor });
 
-        /*  if (currentColor!=color)    
-          {
-              currentColor = color;
-              playerMaterialVisual.SetPlayerMatiral(playerMaterialVisual.GetColorMaterial(currentColor));
-              OnWallColliderDetection?.Invoke(this, new OnColorChanageEventArgs { color = currentColor });    
-
-          }*/
     }
 
     //Passing Variable Refference

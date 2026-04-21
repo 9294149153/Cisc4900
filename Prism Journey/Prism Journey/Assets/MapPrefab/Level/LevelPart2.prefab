@@ -1098,7 +1098,6 @@ GameObject:
   - component: {fileID: 502058903980615604}
   - component: {fileID: 2940121349697442844}
   - component: {fileID: 9102152797780960327}
-  - component: {fileID: 5208209370926569780}
   - component: {fileID: 7595340097263889701}
   - component: {fileID: 8048611626155553946}
   m_Layer: 6
@@ -6899,7 +6898,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6750
+  m_VersionIndex: 6759
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7007,20 +7006,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &5208209370926569780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711398536408844900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f220472a2a9e14486726cd2a4f5da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallCollider: {fileID: 9102152797780960327}
-  playerColor: {fileID: 0}
 --- !u!114 &7595340097263889701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47953,7 +47938,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3748
+  m_VersionIndex: 3757
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -48306,7 +48291,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 15019
+  m_VersionIndex: 15028
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -48661,7 +48646,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6991
+  m_VersionIndex: 7000
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -49065,7 +49050,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4405
+  m_VersionIndex: 4414
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -49183,17 +49168,17 @@ PrefabInstance:
     - target: {fileID: 1042872526046846075, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 3079776262730517664, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 3138367550382122952, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 3999818743202145565, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
@@ -49203,27 +49188,27 @@ PrefabInstance:
     - target: {fileID: 6290238014398337052, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 6852283033410679928, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 7413953020157759711, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 7740007243049828309, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 8146964438066364489, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 8471410661081075804, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
@@ -49278,12 +49263,12 @@ PrefabInstance:
     - target: {fileID: 8598001187453749142, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     - target: {fileID: 8833043260110754772, guid: b4674e3314bd1804eb882cfe88cc7eb7,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4902
+      value: 4911
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49980,7 +49965,7 @@ PrefabInstance:
     - target: {fileID: 5227584229059378491, guid: 69bd76b109d49bb40acfb5373e8b3af5,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 10773
+      value: 10782
       objectReference: {fileID: 0}
     - target: {fileID: 7925862261484915240, guid: 69bd76b109d49bb40acfb5373e8b3af5,
         type: 3}
@@ -50055,6 +50040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ColorBlue_Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2477388126754795893, guid: a926610512378bc44a1c8ca17902035a,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 12295
       objectReference: {fileID: 0}
     - target: {fileID: 6683709857737576174, guid: a926610512378bc44a1c8ca17902035a,
         type: 3}

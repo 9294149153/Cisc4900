@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         playerAnimationBrain.PlayRun();
      
         Vector3 moveDir = new Vector3(input.x, 0, input.y);
-        float speed = 10f;
+        float speed = 15f;
         float playerHeight = 2f;
         float playerRadius = .7f;
         float moveDistance = speed * Time.deltaTime;

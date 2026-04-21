@@ -19,7 +19,15 @@ public class ColorSwap : MonoBehaviour
     [Header("Timer For ColorSwap")]
     private bool canColorSwap;
     [SerializeField] private float swapColdown = 2f;
-    
+
+
+
+    [Header("Detection")]
+    [SerializeField] private Transform detectionPoint;
+    [SerializeField] private float radius = 4f;
+    [SerializeField] private float distance = 0.1f;
+    [SerializeField] private LayerMask colorInteractableLayer;
+
     private void Awake()
     {
         playerColor=GetComponent<PlayerColor>();
@@ -38,7 +46,26 @@ public class ColorSwap : MonoBehaviour
             StartCoroutine(CanColorSwap(swapColdown));
         }
 
-        
+        if (playerColor == null) return;
+
+
+        // if user click the left mouse button then read the hit object on the screen position 
+        if (Input.GetMouseButtonDown(0) && canColorSwap)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f, colorInteractableLayer))
+            {
+                Vector3 worldPos = hit.point;
+                var var = hit.collider.gameObject.GetComponent<ColorObject>();
+                if (var != null)
+                {
+                    TrySwapWithCursor(hit.transform);
+                }
+            }
+            canColorSwap = false;
+            StartCoroutine(CanColorSwap(swapColdown));
+        }
+
     }
 
     public IEnumerator CanColorSwap(float coldwonTime)
@@ -47,10 +74,13 @@ public class ColorSwap : MonoBehaviour
         canColorSwap=true;
 
     }
+
+    //Try to swap color with player with the key press control 
     public void TrySwap()
     {
         //only return true when there are an interactable instance that was in the range and with different color identity
-        var target = playerColorDetection.FindClosestDifferentColor(playerColor.GetCurrentColorIdentity());
+        //var target = playerColorDetection.FindClosestDifferentColor(playerColor.GetCurrentColorIdentity());
+        var target = FindClosestDifferentColor(playerColor.GetCurrentColorIdentity(),detectionPoint);
         if (target == null) return;
         StartCoroutine( PlayEffect(1));
         ColorIdentity oldColor=target.GetColorIdentity();
@@ -60,6 +90,16 @@ public class ColorSwap : MonoBehaviour
         
     }
 
+    //try to swap color with player with the mouse click control
+    public void TrySwapWithCursor(Transform targeting)
+    {
+        var target = FindClosestDifferentColor(playerColor.GetCurrentColorIdentity(), targeting);
+        if (target == null) return;
+        StartCoroutine(PlayEffect(1));
+        ColorIdentity oldColor = target.GetColorIdentity();
+        target.SetColor(playerColor.GetCurrentColorIdentity());
+        playerColor.SetColor(oldColor);
+    }
 
     IEnumerator PlayEffect(float delay)
     {
@@ -71,4 +111,35 @@ public class ColorSwap : MonoBehaviour
     }
 
 
+    public void SwapToOppositeColor(ColorIdentity color )
+    {
+        playerColor.SetColor(color);
+    }
+
+
+
+
+
+    public IColorInteractable FindClosestDifferentColor(ColorIdentity playerCurrentColor,Transform detectionPoint)
+    {
+        //Detect all ColorInterableObject if in range
+        RaycastHit[] colorInteractableHits = Physics.SphereCastAll(detectionPoint.position, radius, detectionPoint.forward, distance, colorInteractableLayer);
+
+        if (colorInteractableHits.Length == 0) return null;
+
+        Array.Sort(colorInteractableHits, (a, b) => a.distance.CompareTo(b.distance));
+
+
+        foreach (RaycastHit hit in colorInteractableHits)
+        {
+            IColorInteractable target = hit.collider.GetComponentInParent<IColorInteractable>();
+            if (target == null) continue;
+
+            //Hit object has different color than player 
+            if (target.GetColorIdentity() != playerCurrentColor)
+                return target;
+        }
+
+        return null;
+    }
 }

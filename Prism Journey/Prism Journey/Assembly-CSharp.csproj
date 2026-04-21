@@ -117,6 +117,7 @@
     <Compile Include="Assets\Script\Interface\Damage\IDamageable.cs" />
     <Compile Include="Assets\Script\Boss\Mech\RunNode\BlackHoleNode\BlackHoleRuntime.cs" />
     <Compile Include="Assets\Script\Boss\Mech\RunNode\LaserNode\LaserNode.cs" />
+    <Compile Include="Assets\Script\Trap\StateSwapMech\StatusExchangeTrap.cs" />
     <Compile Include="Assets\Script\ColorInteractionSystem\WallDetection.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\IEnemyStates.cs" />
     <Compile Include="Assets\PlayerInputAction.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Assets\Script\Boss\Mech\RunNode\LaserNode\LaserAttackActor.cs" />
     <Compile Include="Assets\Script\Enemies\Llama\AttackState\Projectile\EnemyDamage.cs" />
     <Compile Include="Assets\Script\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Image\CursorUi.cs" />
     <Compile Include="Assets\Script\Boss\Mech\RunNode\SphereSweepNode\SphereAttackActor.cs" />
     <Compile Include="Assets\Telegraph\SphereShapeTelegraphCode\SphereTelegraphController.cs" />
     <Compile Include="Assets\Script\Boss\Mech\Interface\Itelegraph.cs" />

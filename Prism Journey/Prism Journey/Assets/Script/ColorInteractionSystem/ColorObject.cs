@@ -28,7 +28,6 @@ public class ColorObject : MonoBehaviour, IColorInteractable
 
         currentColor = colorIdentity[0];
 
-        Debug.Log($"{gameObject.name}: currentColor initialized to {currentColor}");
     }
 
 
@@ -47,7 +46,6 @@ public class ColorObject : MonoBehaviour, IColorInteractable
     }
     public ColorIdentity GetColorIdentity()
     {
-        Debug.Log($"{gameObject.name}: GetColorIdentity -> {currentColor}");
         return currentColor;
     }
     

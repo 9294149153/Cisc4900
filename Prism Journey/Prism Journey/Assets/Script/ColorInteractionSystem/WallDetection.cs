@@ -46,7 +46,6 @@ public class WallDetection : MonoBehaviour
         bool canPass = colorObject.GetColorIdentity() != playerCurrentColor;
         wallCollider.isTrigger = canPass;
 
-        Debug.Log($"{gameObject.name} | wallColor={colorObject.GetColorIdentity()?.name} | playerColor={playerCurrentColor?.name} | isTrigger={canPass}");
     }
 
     private void PlayerColor_OnWallColliderDetection(object sender, PlayerColor.OnColorChanageEventArgs e)
