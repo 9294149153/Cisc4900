@@ -11,35 +11,29 @@ public class Player : MonoBehaviour
     private PlayerInputSystem playerInputSystem;
     private Vector2 input;
 
-    [SerializeField] private PlayerAnimationBrain playerAnimationBrain;
     private void Awake()
     {
         playerInputSystem=GetComponent<PlayerInputSystem>();
+
     }
-        
+
 
     private void Update()
     {
-
         Movement();
 
+
+      
+
+       
+        
     }
 
     public void Movement()
     {
         input = playerInputSystem.GetMovementVectorNormalized();
-
-        //  player did not move do ignore the later code
-        if (input == Vector2.zero) {
-            playerAnimationBrain.PlayIdle();
-            return; 
-        } 
-       
-
-        playerAnimationBrain.PlayRun();
-     
         Vector3 moveDir = new Vector3(input.x, 0, input.y);
-        float speed = 15f;
+        float speed = 10f;
         float playerHeight = 2f;
         float playerRadius = .7f;
         float moveDistance = speed * Time.deltaTime;
@@ -47,6 +41,50 @@ public class Player : MonoBehaviour
        
        bool canMove=!Physics.CapsuleCast(transform.position,transform.position+Vector3.up*playerHeight,playerRadius,moveDir,moveDistance);
         
+
+       
+        /*
+        if (!canMove)
+        {
+            //cannot move toward moveDir 
+            //Attemp only X movement 
+            Vector3 moveDirX = new Vector3(moveDir.x,0,0);
+            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
+
+            if ((canMove))
+            {
+                // can move only x
+                moveDir = moveDirX;
+
+            }
+            else
+            {
+                //cannot move only on the X
+                //Attemp only Z movement
+                Vector3 moveDirZ = new Vector3(0 ,0, moveDir.z);
+                canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
+
+                if (canMove) {
+                    moveDir = moveDirZ;
+                }
+                else
+                {
+                    // cannot move with any direction
+                }
+
+            }
+
+
+        }*/
+
+       /* if (canMove)
+        {
+            transform.position += moveDir * speed * Time.deltaTime;
+
+        }*/
+
+
+
         transform.position += moveDir * speed * Time.deltaTime;
 
         //movement fluent 
@@ -63,10 +101,6 @@ public class Player : MonoBehaviour
         return moveDir;
     }
   
-    
-    public void SetScirptActive(bool value)
-    {
-        this.enabled= value;
-    }
+
 
 }
